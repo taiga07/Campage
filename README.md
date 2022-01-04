@@ -22,10 +22,10 @@
 
 ## 設計書
 
-・ER図：https://drive.google.com/file/d/19jT829nFAr2zrKfoiCz_JRHow9GyjBLY/view?usp=sharing
-・テーブル定義書：https://docs.google.com/spreadsheets/d/1jT-ZpHbQjBFa-EaTYS57rFuxCW22H7-FmxXS0qQ9WXA/edit?usp=sharing
-・アプリケーション詳細設計書：https://docs.google.com/spreadsheets/d/11t2xNA3BT0udB2vOMZMbHlYXjy5na3m9dzuMRtWgVT4/edit?usp=sharing
-・ワイヤーフレーム：https://drive.google.com/file/d/12sAyogkH08yRK5fUHUzpOHRaf2atKxPt/view?usp=sharing
+- ER図：https://drive.google.com/file/d/19jT829nFAr2zrKfoiCz_JRHow9GyjBLY/view?usp=sharing
+- テーブル定義書：https://docs.google.com/spreadsheets/d/1jT-ZpHbQjBFa-EaTYS57rFuxCW22H7-FmxXS0qQ9WXA/edit?usp=sharing
+- アプリケーション詳細設計書：https://docs.google.com/spreadsheets/d/11t2xNA3BT0udB2vOMZMbHlYXjy5na3m9dzuMRtWgVT4/edit?usp=sharing
+- ワイヤーフレーム：https://drive.google.com/file/d/12sAyogkH08yRK5fUHUzpOHRaf2atKxPt/view?usp=sharing
 
 
 ## チャレンジ要素一覧
