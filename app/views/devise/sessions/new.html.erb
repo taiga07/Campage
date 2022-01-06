@@ -1,13 +1,11 @@
-<h2>Log in</h2>
-
 <%= form_with model: @user, url: user_session_path, local: true do |f| %>
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.label :表示名 %>
+    <%= f.text_field :name, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
+    <%= f.label :password %>
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
 
@@ -19,8 +17,9 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "ログイン" %>
   </div>
 <% end %>
 
+<p>会員登録がまだの方は</p>
 <%= render "devise/shared/links" %>
