@@ -10,6 +10,62 @@
   </head>
 
   <body>
+    <header>
+      <h1>Campage</h1>
+      <% if user_signed_in? %>
+        <ul class="nav">
+          <li>
+            <%= link_to "POSTSLIST", posts_path %>
+          </li>
+          <li>
+            <%= link_to "RANKING", posts_ranking_path %>
+          </li>
+          <li>
+            <%= link_to "CONTACT", new_contacts_path %>
+          </li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+        <!--ログインしていなくて、トップページ、新規登録ページ、ログインページの場合の処理-->
+      <% elsif current_page?(root_path) || current_page?(new_user_session_path) || current_page?(new_user_registration) %>
+        <ul class="nav">
+          <li>
+            <%=link_to "ABOUT", about_path %>
+          </li>
+          <li>
+            <%= link_to "POSTSLIST", posts_path %>
+          </li>
+          <li>
+            <%= link_to "RANKING", posts_ranking_path %>
+          </li>
+          <li>
+            <%= link_to "CONTACT", new_contacts_path %>
+          </li>
+        </ul>
+      <% else %>
+        <ul class="nav">
+          <li>
+            <%=link_to "ABOUT", about_path %>
+          </li>
+          <li>
+            <%= link_to "POSTSLIST", posts_path %>
+          </li>
+          <li>
+            <%= link_to "RANKING", posts_ranking_path %>
+          </li>
+          <li>
+            <%= link_to "CONTACT", new_contacts_path %>
+          </li>
+          <li>
+            <%= link_to "SIGNUP", new_user_registration_path %>
+          </li>
+          <li>
+            <%= link_to "LOGIN", new_user_session_path %>
+          </li>
+        </ul>
+      <%end%>
+    </header>
     <%= yield %>
   </body>
 </html>

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'homes#top'
   get '/about' => 'homes#about'
 
+
   resources :users, only: [:show, :edit, :update] do
     # memberを使うことで、7つ以外のルーティングも追加している。
     # 今回の場合、フォロー一覧とフォロワー一覧
@@ -11,6 +12,12 @@ Rails.application.routes.draw do
       get :follows, :followers
     end
     resource :relationships, only: [:create, :destroy]
+  end
+
+  resource :contacts, only: [:new, :create] do
+    member do
+      get :confirm
+    end
   end
 
   resources :posts do
