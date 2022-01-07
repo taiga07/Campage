@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <table>
+        <tr>
+          <th><%= @post.user.name %></th>
+        </tr>
+        <tr>
+          <th><%= @post.user.introduction %></th>
+        </tr>
+        <tr>
+          <th></th>
+        </tr>
+      </table>
+    </div>
+    <div class="col-lg-5">
+      <table>
+        <tr>
+          <th><%= @post.title %></th>
+        </tr>
+        <tr class="slick">
+          <td class="slick">
+            <% @post.post_images.each do |image| %>
+              <%= attachment_image_tag image, :image, size: '300x300' %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td><%= @post.body %></td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-lg-4">
+      <h2>コメント一覧</h2>
+    </div>
+  </div>
+</div>
