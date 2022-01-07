@@ -14,12 +14,13 @@
  *= require_self
  */
 
-@import"bootstrap";
+@import "bootstrap";
+@import "slick-theme";
+@import "slick";
 
 header {
   display: flex;
   justify-content: flex-end;
-
 }
 header > :first-child {
   margin-right: auto;
