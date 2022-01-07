@@ -18,3 +18,8 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+$(document).on('turbolinks:load', function(){
+  $('.slick').slick({
+  });
+});

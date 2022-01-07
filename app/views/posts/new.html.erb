@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <%= form_with model: @post, local: true do |f| %>
+      <table>
+        <tr>
+          <th>
+            <h2>新規登録</h2>
+          </th>
+        </tr>
+        <tr>
+          <td>
+            <%= f.attachment_field :post_images_images, multiple: true %>
+            <!--multiple: trueが画像複数投稿する際に必要になる。-->
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <%= f.text_field :title, placeholder: "キャンプ場or施設名" %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <%= f.text_area :body, placeholder: "道具の紹介や施設の紹介など" %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <%= f.submit "シェア" %>
+          </td>
+        </tr>
+      </table>
+    <% end %>
+  </div>
+</div>

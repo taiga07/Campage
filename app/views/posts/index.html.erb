@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <%= @post.name %>
+    </div>
+    <div class="col-lg-9">
+      <table>
+        <% @posts.each do |post| %>
+          <tr>
+            <td><%= post.user.name %></td>
+          </tr>
+          <tr>
+            <td><%= post.title %></td>
+          </tr>
+            <tr class="slick">
+              <td class="slick">
+                <% post.post_images.each do |image| %>
+                  <%= attachment_image_tag image, :image, size: '150x150' %>
+                <% end %>
+              </td>
+              </td>
+            </tr>
+          <tr>
+            <td><%= post.body %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+
