@@ -1,0 +1,10 @@
+<!--コメントはpostに紐付いたcommentであるため2つのIDの情報が必要になります。-->
+<!--form_withのlocal: trueを外すことで、jsファイルを探しにいく。-->
+<%= form_with(model:[post, comment]) do |f| %>
+　<!--エラーメッセージをdivタグで囲む-->
+　<div class="comments_error">
+   <%= render 'layouts/error_messages', model: f.object %>
+  </div>
+  <%= f.text_area :comment, rows:'5',placeholder: "コメントを入力" %>
+  <%= f.submit "送信" %>
+<% end %>
