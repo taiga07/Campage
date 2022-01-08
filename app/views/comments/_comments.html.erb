@@ -1,0 +1,15 @@
+<!--投稿に紐付いたコメントの数を表示-->
+<h2>コメント一覧:<%= post.comments.count %>件</h2>
+<% post.comments.each do |comment| %>
+  <div>
+    <%= attachment_image_tag comment.user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
+    <%= comment.user.name %>
+  </div>
+  <div>
+    <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+    <% if comment.user == current_user %>
+      <!--link_toには,remote: trueを追加することでjsファイルを探してくれる。-->
+      <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote: true %>
+    <% end %>
+  </div>
+<% end %>

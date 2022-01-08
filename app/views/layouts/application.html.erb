@@ -77,6 +77,12 @@
         </ul>
       <%end%>
     </header>
+    <main>
+      <!--フラッシュメッセージの部分をdivタグで囲む-->
+      <div class="flash_message">
+        <%= render 'layouts/flash' %>
+      </div>
     <%= yield %>
+    </main>
   </body>
 </html>

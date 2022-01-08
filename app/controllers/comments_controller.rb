@@ -7,16 +7,28 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     # commentsテーブルのpost_idにコメントする投稿のIDを格納
     @comment.post_id = @post.id
-    @comment.save
-    redirect_to post_path(@post.id)
+    if @comment.save
+      # 連続で投稿した際にフラッシュメッセージが残らないよう、flash.nowとする
+      flash.now[:notice] = 'コメントを投稿しました'
+      #render先をcomments.js.erbに指定
+      render :comments
+    else
+      #render先をerror.js.erbに指定
+      render :error
+    end
   end
 
   def destroy
     # commentをidやpost_idから見つけて削除する。
     Comment.find_by(id: params[:id], post_id: params[:post_id]).destroy
-    # 削除後、その投稿の詳細画面に戻る。
-    redirect_to post_path(params[:post_id])
+    # 連続で失敗した際にフラッシュメッセージが残らないよう、flash.nowとする
+    flash.now[:alert] = '投稿を削除しました'
+     #render先をcomments.js.erbに指定
+     #renderしたときに@postのデータがないので@postを定義
+    @post = Post.find(params[:post_id])
+    render :comments
   end
+
 
   private
   def comment_params
