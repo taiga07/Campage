@@ -20,26 +20,11 @@
             <% end %>
           <% end %>
         </div>
-        <!--投稿画像に付けられたグッドにログインユーザーが含まれているか確認。-->
-        <% if post.liked_by?(current_user) %>
-          <div>
-            <%= link_to post_likes_path(post.id), method: :delete do %>
-              <i class="fas fa-thumbs-up"></i>
-            <% end %>
-          </div>
-          <div>
-            グッド!! <%= post.likes.count %>件
-          </div>
-        <% else %>
-          <div>
-            <%= link_to post_likes_path(post.id), method: :post do %>
-              <i class="far fa-thumbs-up"></i>
-            <% end %>
-          </div>
-          <div>
-            グッド!! <%= post.likes.count %>件
-          </div>
-        <% end %>
+        <!--どの投稿も同じ部分テンプレートを使うので、グッドを押すと全ての投稿にグッドがついてしまうので、-->
+        <!--部分テンプレート自体にidをつけることで、投稿ごとにグッドをすることができる。-->
+        <div class="like_btn_<%= post.id %>">
+          <%= render "likes/like", post: post %>
+        </div>
         <div>
           <%= post.body %>
         </div>

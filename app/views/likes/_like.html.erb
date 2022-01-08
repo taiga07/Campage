@@ -1,0 +1,22 @@
+ <!--投稿画像に付けられたグッドにログインユーザーが含まれているか確認。-->
+<% if post.liked_by?(current_user) %>
+  <div>
+    <!--remote: trueを追記することでjsファイルを探しに行ってもらう。-->
+    <%= link_to post_likes_path(post.id), method: :delete, remote: true do %>
+      <i class="fas fa-thumbs-up"></i>
+    <% end %>
+  </div>
+  <div>
+    グッド!! <%= post.likes.count %>件
+  </div>
+<% else %>
+  <div>
+    <!--remote: trueを追記することでjsファイルを探しに行ってもらう。-->
+    <%= link_to post_likes_path(post.id), method: :post, remote: true do %>
+      <i class="far fa-thumbs-up"></i>
+    <% end %>
+  </div>
+  <div>
+    グッド!! <%= post.likes.count %>件
+  </div>
+<% end %>
