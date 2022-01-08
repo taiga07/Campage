@@ -1,3 +1,43 @@
-<p>マイページ</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <table>
+        <tr>
+          <th><%= attachment_image_tag @user, :profile_image, size: '50x50', fallback: "no_image.jpg" %></th>
+          <th><%= @user.name %></th>
+        </tr>
+        <tr>
+          <td>フォロー中</td>
+        </tr>
+        <tr>
+          <td>フォロワー</td>
+        </tr>
+        <% if @user == current_user %>
+          <tr>
+            <td>
+              <%= link_to "edit", edit_user_path(current_user.id) %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+            </td>
+          </tr>
+        <% else %>
+          <tr>
+            <td>フォローボタン</td>
+          </tr>
+          <tr>
+            <td>DMボタン</td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class="col-lg-9">
+      <%#= @posts.post_images.each do |image| %>
+        <%#= attachment_image_tag image, :image, size: '150x150' %>
+      <%# end %>
+    </div>
+  </div>
+</div>
 
-<%= link_to "Logout", destroy_user_session_path, method: :delete %>
