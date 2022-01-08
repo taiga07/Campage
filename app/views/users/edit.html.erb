@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="low">
+    <%= form_with model: @user, local: true do |f| %>
+      <table>
+        <tr>
+          <th>
+            <%= attachment_image_tag @user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
+          </th>
+          <th>
+            <%= @user.name %>
+          </th>
+        </tr>
+        <tr>
+          <div class="field">
+            <th><%= f.label :表示名 %></th>
+            <td><%= f.text_field :name,autofocus: true %></td>
+          </div>
+        </tr>
+        <tr>
+          <div class="field">
+            <th><%= f.label :プロフィール画像 %></th>
+            <td><%= f.attachment_field :profile_image %></td>
+          </div>
+        </tr>
+        <tr>
+          <div class="field">
+            <th><%= f.label :自己紹介 %></th>
+            <td><%= f.text_area :introduction %></td>
+          </div>
+        </tr>
+        <tr>
+          <div class="field">
+            <th><%= f.label :メールアドレス %></th>
+            <td><%= f.email_field :email, autofocus: true %></td>
+          </div>
+        </tr>
+        <tr>
+          <div class="field">
+            <th><%= f.label :電話番号（ハイフンなし） %></th>
+            <td> <%= f.text_field :phone_number,autofocus: true %></td>
+          </div>
+        </tr>
+        <tr>
+          <th></th>
+          <div class="actions">
+            <td><%= f.submit "変更を保存" %></td>
+          </div>
+        </tr>
+      </table>
+    <% end %>
+  </div>
+</div>

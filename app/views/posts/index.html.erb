@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-3">
+      <%= attachment_image_tag current_user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
       <%= @post.name %>
     </div>
     <div class="col-lg-9">
