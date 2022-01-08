@@ -10,9 +10,8 @@
     <script src="https://kit.fontawesome.com/91d36909a5.js" crossorigin="anonymous"></script>
     <!--slickの読み込み-->
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-    <!--<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>-->
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <!--ここまで-->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>    <!--ここまで-->
   </head>
 
   <body>
@@ -34,7 +33,9 @@
           </li>
           <li>通知</li>
           <li>
-            <%= link_to "マイページ", user_path(current_user) %>
+            <%= link_to user_path(current_user) do %>
+              <%= attachment_image_tag current_user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
+            <% end %>
           </li>
         </ul>
         <!--ログインしていなくて、トップページ、新規登録ページ、ログインページの場合の処理-->
