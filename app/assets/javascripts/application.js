@@ -19,7 +19,11 @@
 //= require turbolinks
 //= require_tree .
 
-$(document).on('turbolinks:load', function(){
-  $('.slick').slick({
-  });
+$(document).on('turbolinks:load', function() {
+    $('.slick').slick({
+        dots: true,
+        infinite: true,
+        speed: 300,
+        slidesToShow: 1
+    });
 });

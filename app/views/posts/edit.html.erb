@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row flex-column">
+    <div class="slick" style="width: 60%;">
+      <% @post.post_images.each do |image| %>
+        <%= attachment_image_tag image, :image %>
+      <% end %>
+    </div>
+    <%= form_with model:@post, local: true do |f| %>
+      <div><%= f.text_field :title %></div>
+      <div><%= f.text_area :body %></div>
+      <div><%= f.submit "変更を保存" %></div>
+    <% end %>
+  </div>
+</div>

@@ -3,32 +3,44 @@
     <div class="col-lg-3">
       <table>
         <tr>
-          <th><%= @post.user.name %></th>
+          <th>
+            <%= attachment_image_tag @post.user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
+            <%= @post.user.name %>
+            </th>
         </tr>
         <tr>
           <th><%= @post.user.introduction %></th>
         </tr>
-        <tr>
-          <th></th>
-        </tr>
+        <% if @post.user == current_user %>
+          <tr>
+            <th>
+              <%= link_to "投稿内容の編集", edit_post_path(@post.id) %>
+            </th>
+          </tr>
+          <tr>
+            <th>
+              <%= link_to "投稿を削除", post_path(@post), method: :delete %>
+            </th>
+          </tr>
+        <% else %>
+          <tr>
+            <th>フォローする</th>
+          </tr>
+        <% end %>
       </table>
     </div>
     <div class="col-lg-5">
-      <table>
-        <tr>
-          <th><%= @post.title %></th>
-        </tr>
-        <tr class="slick">
-          <td class="slick">
-            <% @post.post_images.each do |image| %>
-              <%= attachment_image_tag image, :image, size: '300x300' %>
-            <% end %>
-          </td>
-        </tr>
-        <tr>
-          <td><%= @post.body %></td>
-        </tr>
-      </table>
+      <div>
+        <%= @post.title %>
+      </div>
+      <div class="slick" style="width: 100%;">
+        <% @post.post_images.each do |image| %>
+          <%= attachment_image_tag image, :image, style: "width: 100%" %>
+        <% end %>
+      </div>
+      <div>
+        <%= @post.body %>
+      </div>
     </div>
     <div class="col-lg-4">
       <h2>コメント一覧</h2>
