@@ -43,7 +43,27 @@
       </div>
     </div>
     <div class="col-lg-4">
-      <h2>コメント一覧</h2>
+      <!--投稿に紐付いたコメントの数を表示-->
+      <h2>コメント一覧:<%= @post.comments.count %>件</h2>
+      <% @post.comments.each do |comment| %>
+        <div>
+          <%= attachment_image_tag comment.user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
+          <%= comment.user.name %>
+        </div>
+        <div>
+          <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+          <% if comment.user == current_user %>
+            <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete %>
+          <% end %>
+        </div>
+      <% end %>
+      <div>
+        <!--コメントはpostに紐付いたcommentであるため2つのIDの情報が必要になります。-->
+        <%= form_with(model:[@post, @comment], local: true) do |f| %>
+          <%= f.text_area :comment, rows:'5',placeholder: "コメントを入力" %>
+          <%= f.submit "送信" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
