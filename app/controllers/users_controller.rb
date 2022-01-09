@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @posts = @user.posts
     # そのユーザーがフォローした相手を格納
     @following_users = @user.following_user
-    # そのユーザーがフォローされている相手を
+    # そのユーザーがフォローされている相手を格納
     @follower_users = @user.follower_user
   end
 
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     # 特定のユーザー情報を取得
     @user = User.find(params[:id])
     # そのユーザーにフォローされているユーザーを@usersに格納
-    @users - @user.following_user
+    @users = @user.following_user
   end
 
   # フォロワー一覧
