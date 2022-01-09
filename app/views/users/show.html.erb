@@ -36,13 +36,15 @@
       <% end %>
     </div>
     <div class="col-lg-9">
-      <% @posts.each do |post| %>
-        <% post.post_images.first(1).each do |image| %>
-          <%= link_to post_path(post.id) do %>
-            <%= attachment_image_tag image, :image, size: '200x200' %>
+      <div class="mypage">
+        <% @posts.each do |post| %>
+          <% post.post_images.first(1).each do |image| %>
+            <%= link_to post_path(post.id) do %>
+              <%= attachment_image_tag image, :image %>
+            <% end %>
           <% end %>
         <% end %>
-      <% end %>
+    　</div>
     </div>
   </div>
 </div>
