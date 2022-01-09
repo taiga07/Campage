@@ -23,6 +23,12 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
+    # 投稿に紐付いたユーザー情報を格納
+    @user = @post.user
+    # そのユーザーがフォローした相手を格納
+    @following_users = @user.following_user
+    # そのユーザーがフォローされている相手を格納
+    @follower_users = @user.follower_user
   end
 
   def edit

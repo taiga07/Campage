@@ -1,37 +1,39 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-3">
-      <table>
-        <tr>
-          <th><%= attachment_image_tag @user, :profile_image, size: '50x50', fallback: "no_image.jpg" %></th>
-          <th><%= @user.name %></th>
-        </tr>
-        <tr>
-          <td>フォロー中</td>
-        </tr>
-        <tr>
-          <td>フォロワー</td>
-        </tr>
-        <% if @user == current_user %>
-          <tr>
-            <td>
-              <%= link_to "edit", edit_user_path(current_user.id) %>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-            </td>
-          </tr>
+      <div>
+        <%= attachment_image_tag @user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
+        <%= @user.name %>
+      </div>
+      <div>
+        <%= link_to "フォロー中", follows_user_path(@user.id) %>
+        <%= @following_users.count %>
+      </div>
+      <div>
+        <%= link_to "フォロワー", followers_user_path(@user.id) %>
+        <%= @follower_users.count %>
+      </div>
+      <% if @user == current_user %>
+       <div>
+         <%= link_to "edit", edit_user_path(current_user.id) %>
+       </div>
+       <div>
+         <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+       </div>
+      <% else %>
+        <% if current_user.following?(@user) %>
+          <div>
+            <%= link_to "フォロー外す", user_relationships_path(@user.id), method: :delete %>
+          </div>
         <% else %>
-          <tr>
-            <td>フォローボタン</td>
-          </tr>
-          <tr>
-            <td>DMボタン</td>
-          </tr>
+          <div>
+            <%= link_to "フォローする", user_relationships_path(@user.id), method: :POST %>
+          </div>
         <% end %>
-      </table>
+        <div>
+          DMボタン
+        </div>
+      <% end %>
     </div>
     <div class="col-lg-9">
       <% @posts.each do |post| %>

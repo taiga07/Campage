@@ -1,33 +1,44 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-3">
-      <table>
-        <tr>
-          <th>
-            <%= attachment_image_tag @post.user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
-            <%= @post.user.name %>
-            </th>
-        </tr>
-        <tr>
-          <th><%= @post.user.introduction %></th>
-        </tr>
-        <% if @post.user == current_user %>
-          <tr>
-            <th>
-              <%= link_to "投稿内容の編集", edit_post_path(@post.id) %>
-            </th>
-          </tr>
-          <tr>
-            <th>
-              <%= link_to "投稿を削除", post_path(@post), method: :delete %>
-            </th>
-          </tr>
-        <% else %>
-          <tr>
-            <th>フォローする</th>
-          </tr>
+      <div>
+        <%= link_to user_path(@post.user.id) do %>
+          <%= attachment_image_tag @post.user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
         <% end %>
-      </table>
+        <%= @post.user.name %>
+      </div>
+      <div>
+        <%= @post.user.introduction %>
+      </div>
+      <% if @post.user == current_user %>
+        <div>
+          <%= link_to "投稿内容の編集", edit_post_path(@post.id) %>
+        </div>
+        <div>
+          <%= link_to "投稿を削除", post_path(@post), method: :delete %>
+        </div>
+      <% else %>
+        <div>
+          <%= link_to "フォロー中", follows_user_path(@user.id) %>
+          <%= @following_users.count %>
+        </div>
+        <div>
+          <%= link_to "フォロワー", followers_user_path(@user.id) %>
+          <%= @follower_users.count %>
+        </div>
+        <% if current_user.following?(@user) %>
+          <div>
+            <%= link_to "フォロー外す", user_relationships_path(@user.id), method: :delete %>
+          </div>
+        <% else %>
+          <div>
+            <%= link_to "フォローする", user_relationships_path(@user.id), method: :POST %>
+          </div>
+        <% end %>
+        <div>
+          DMボタン
+        </div>
+      <% end %>
     </div>
     <div class="col-lg-5">
       <div>
