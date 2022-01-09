@@ -1,14 +1,27 @@
 class RelationshipsController < ApplicationController
-  
+
   def create
     current_user.follow(params[:user_id])
-    # 遷移元のURLを取得しリダイレクトする。（もといた画面にリダイレクトする）
-    redirect_to request.referer
+    flash.now[:notice] = 'フォローしました'
+
+    # renderを使用するためuserのshowページに必要なデータを記述
+    @user = User.find(params[:user_id])
+    @following_users = @user.following_user
+    @follower_users = @user.follower_user
+    # ここまで
+    render :relationship  #jsファイルを指定
   end
-  
+
   def destroy
     current_user.unfollow(params[:user_id])
-    redirect_to request.referer
+    flash.now[:alert] = 'フォローを外しました'
+
+    # renderを使用するためuserのshowページに必要なデータを記述
+    @user = User.find(params[:user_id])
+    @following_users = @user.following_user
+    @follower_users = @user.follower_user
+    # ここまで
+    render :relationship  #jsファイルを指定
   end
-  
+
 end

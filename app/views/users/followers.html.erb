@@ -4,20 +4,18 @@
       <h2>フォロワー一覧</h2>
     </div>
   </div>
-  <div class="row">
-    <% @users.each do |user| %>
-      <div>
+  <% @users.each do |user| %>
+    <div class="row">
+      <%= link_to user_path(user.id) do %>
         <%= attachment_image_tag user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
-        <%= user.name %>
-        <% if current_user == user %>
-        <% else %>
-          <% if current_user.following?(user) %>
-            <%= link_to "フォロー中", user_relationships_path(user.id), method: :delete %>
-          <% else %>
-            <%= link_to "フォローする", user_relationships_path(user.id), method: :POST %>
-          <% end %>
         <% end %>
-      </div>
-    <% end %>
-  </div>
+      <%= user.name %>
+      <% if current_user == user %>
+      <% else %>
+        <div class="relationship">
+          <%= render "relationships/button", user: user %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
