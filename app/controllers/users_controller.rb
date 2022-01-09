@@ -5,6 +5,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     # そのユーザーに紐づいた投稿を@postsに格納
     @posts = @user.posts
+    # そのユーザーがフォローした相手を格納
+    @following_users = @user.following_user
+    # そのユーザーがフォローされている相手を
+    @follower_users = @user.follower_user
   end
 
   def edit
@@ -19,6 +23,23 @@ class UsersController < ApplicationController
       render :edit
     end
   end
+
+  # フォロー一覧
+  def follows
+    # 特定のユーザー情報を取得
+    @user = User.find(params[:id])
+    # そのユーザーにフォローされているユーザーを@usersに格納
+    @users - @user.following_user
+  end
+
+  # フォロワー一覧
+  def followers
+    # 特定のユーザー情報を取得
+    @user = User.find(params[:id])
+    # そのユーザーがフォローされているユーザーを@usersに格納
+    @users = @user.follower_user
+  end
+
 
   private
 
