@@ -19,13 +19,13 @@
         </div>
       <% else %>
         <div class="relationship_count">
-          <%= render "relationships/count",user: @user, following_users: @following_users, follower_users: @follower_users %>
+          <%= render "relationships/count", user: @user, following_users: @following_users, follower_users: @follower_users %>
         </div>
         <div class="relationship">
           <%= render "relationships/button", user: @user %>
         </div>
         <div>
-          DMボタン
+          <%= render "users/message_button", user: @user, isroom: @isroom, room: @room, entry: @entry, roomid: @roomid %>
         </div>
       <% end %>
     </div>

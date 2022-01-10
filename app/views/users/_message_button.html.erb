@@ -1,0 +1,12 @@
+<% if current_user.id != user.id %>    <!--現在ログインしているユーザーではない場合-->
+  <% if isroom == true %>    <!--既にルームが作成されていれば-->
+    <%= link_to "ダイレクトメッセージ", room_path(roomid) %>    <!--そのチャットルームに遷移するボタンを表示-->
+  <% else %>  <!--ルームがなければ-->
+    <%= form_with model: room, local: true do |f| %>    <!--roomsテーブルに情報を送信-->
+      <%= fields_for entry do |r| %>    <!--entriesテーブルに情報を送信-->
+        <%= r.hidden_field :user_id, value: user.id %>  <!--entriesテーブルにuser_idを含める-->
+      <% end %>
+      <%= f.submit "チャットを始める" %>
+    <% end %>
+  <% end %>
+<% end %>
