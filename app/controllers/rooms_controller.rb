@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  
+
   def create
     @room = Room.create  #ルームを作成
     #Entriesテーブルのuser_idカラムには自身のidを入れ、room_idカラムには今作ったルームのidを保存し@entry1に格納。
@@ -8,7 +8,7 @@ class RoomsController < ApplicationController
     @entry2 = Entry.create(room_params)
     redirect_to room_path(@room.id)  #作成と同時に移動
   end
-  
+
   def show
     @room = Room.find(params[:id])  #ひとつのルームを取り出す。
     #Entriesテーブルにログインしているユーザーidとそれに紐づいたルームid探し、データがあるかを確認。
@@ -20,8 +20,7 @@ class RoomsController < ApplicationController
       redirect_back(fallback_location: root_path)  #前のページに戻る
     end
   end
-  
-  
+
   private
   def room_params
     params.require(:entry).permit(:user_id, :room_id).merge(room_id: @room.id)

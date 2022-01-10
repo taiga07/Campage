@@ -23,12 +23,19 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
-    # 投稿に紐付いたユーザー情報を格納
-    @user = @post.user
-    # そのユーザーがフォローした相手を格納
-    @following_users = @user.following_user
-    # そのユーザーがフォローされている相手を格納
-    @follower_users = @user.follower_user
+    @user = @post.user  #投稿に紐付いたユーザー情報を格納
+    @following_users = @user.following_user  #そのユーザーがフォローした相手を格納
+    @follower_users = @user.follower_user  #そのユーザーがフォローされている相手を格納
+
+    @self_room = Entry.where(user_id: current_user.id).pluck(:room_id)
+    @target_room = Entry.where(user_id: @user.id).pluck(:room_id)
+    @roomid = @self_room & @target_room
+    if @roomid.blank?
+      @room = Room.new  #新しいインスタンスを生成
+      @entry = Entry.new  #新しいインスタンスを生成
+    else
+      @isroom = true
+    end
   end
 
   def edit

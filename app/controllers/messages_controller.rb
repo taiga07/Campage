@@ -12,6 +12,8 @@ class MessagesController < ApplicationController
 
   private
   def message_params
+    #mergeはuser_idにcurrent_userのidを入れcreateする。
+    #message.user_id = current_user.id
     params.require(:message).permit(:user_id, :message, :room_id).merge(user_id: current_user.id)
   end
 end
