@@ -6,23 +6,11 @@
         <%= e.user.name %>さん
       <% end %>
     </h2>
-    <div>
-      <% if @messages.present? %>  <!--@messagesにメッセージが入っているか確認-->
-        <% @messages.each do |m| %>  <!--入っていれば取り出しひとつずつmに格納-->
-          <%= attachment_image_tag m.user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
-          <%= m.message %><br>
-          <%= m.created_at.strftime("%Y-%m-%d %H:%M")%>
-        <% end %>
-      <% else %>
-        メッセージを送ってみよう！
-      <% end %>
+    <div class="messages_area">
+      <%= render "messages/messages", messages: @messages %>
     </div>
-    <div>
-      <%= form_with model: @message, local: true do |f| %>
-        <%= f.text_field :message, placeholder: "メッセージを入力" %>
-        <%= f.hidden_field :room_id, value: @room.id %>  <!--メッセージがどのルームのものか判断するために、メッセージと一緒にroomのidも送る-->
-        <%= f.submit "送信" %>
-      <% end %>
+    <div class="message_form">
+      <%= render "messages/form" %>
     </div>
   </div>
 </div>
