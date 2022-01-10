@@ -1,2 +1,0 @@
-class EntrisController < ApplicationController
-end

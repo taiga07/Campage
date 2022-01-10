@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
   # Relationshipモデルをfollowerとfollowedの二つに分ける。
   # followerモデルはfollower_idのデータが入る。
   # フォローする側から見てフォローされる側のデータを取得する。（フォローした相手のデータ）

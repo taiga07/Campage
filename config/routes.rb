@@ -30,8 +30,8 @@ Rails.application.routes.draw do
 
   resource :searches, only: [:index]
 
-  get 'message/:id' => 'messages#show', as: 'message'
   resources :messages, only: [:create]
+  resources :rooms, only: [:create, :show]
 
   resources :notifications, only: [:index]
 
