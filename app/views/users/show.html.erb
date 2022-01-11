@@ -26,6 +26,9 @@
           <%= link_to "edit", edit_user_path(current_user.id) %>
         </div>
         <div>
+          <%= link_to "DMリスト",rooms_path %>
+        </div>
+        <div>
           <%= link_to "Logout", destroy_user_session_path, method: :delete %>
         </div>
       <% end %>

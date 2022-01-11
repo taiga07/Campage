@@ -21,6 +21,10 @@ class RoomsController < ApplicationController
     end
   end
 
+  def index
+    @rooms = current_user.rooms.joins(:messages).includes(:messages).order("messages.created_at DESC")
+  end
+
   private
   def room_params
     params.require(:entry).permit(:user_id, :room_id).merge(room_id: @room.id)

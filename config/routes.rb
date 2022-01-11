@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   resource :searches, only: [:index]
 
   resources :messages, only: [:create]
-  resources :rooms, only: [:create, :show]
+  resources :rooms, only: [:create, :show, :index]
 
   resources :notifications, only: [:index]
 
