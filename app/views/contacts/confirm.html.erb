@@ -1,0 +1,43 @@
+<!--newページで入力されたデータを表示している。-->
+
+<table>
+  <tr>
+    <th></th>
+    <th>
+      <h2>入力内容確認</h2>
+    </th>
+  </tr>
+    <td>お名前</td>
+    <td><%= @contact.name %></td>
+  </tr>
+  <tr>
+    <td>メールアドレス</td>
+    <td><%= @contact.email %></td>
+  </tr>
+  <tr>
+    <td>電話番号</td>
+    <td><%= @contact.phone_number %></td>
+  </tr>
+  <tr>
+    <td>お問い合わせ内容</td>
+    <td><%= @contact.body %></td>
+  </tr>
+</table>
+
+<!--コントローラーに情報を送り、createアクションが実行される。-->
+<%=form_with model: @contact, local: true do |f| %>
+  <%= f.hidden_field :name %>
+  <%= f.hidden_field :email %>
+  <%= f.hidden_field :phone_number %>
+  <%= f.hidden_field :body %>
+  <%= f.submit "送信" %>
+<% end %>
+
+<!--backアクションを起こし、new画面にデータを送っている-->
+<%=form_with model: @contact, url: back_contacts_path, local: true do |f| %>
+  <%= f.hidden_field :name %>
+  <%= f.hidden_field :email %>
+  <%= f.hidden_field :phone_number %>
+  <%= f.hidden_field :body %>
+  <%= f.submit "入力画面に戻る" %>
+<% end %>

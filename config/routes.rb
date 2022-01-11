@@ -16,7 +16,9 @@ Rails.application.routes.draw do
 
   resource :contacts, only: [:new, :create] do
     member do
-      get :confirm
+      post :confirm
+      post :back
+      get :done
     end
   end
 
