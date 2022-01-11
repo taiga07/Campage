@@ -23,6 +23,11 @@ class User < ApplicationRecord
   # フォローされる人は中間テーブル(Relationshipのfollowed)を通じて、フォローする人と紐づく(follower)
   has_many :follower_user, through: :followed, source: :follower #自分をフォローしている人を取得
 
+  # 通知を送ったユーザー（visiter_idを参考にactive_notificationsモデルにアクセスする。）
+  has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
+  # 通知をもらったユーザー（visited_idを参考にpassive_notificationsモデルにアクセスする。）
+  has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
+
   # ユーザーをフォローする
   def follow(user_id)
     follower.create(followed_id: user_id)
@@ -36,6 +41,18 @@ class User < ApplicationRecord
   # フォローしていればtrueを返す
   def following?(user)
     following_user.include?(user)
+  end
+
+  # 通知メソッド
+  def create_notification_follow!(current_user)
+    temp = Notification.where(["visiter_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        visited_id: id,
+        action: 'follow'
+      )
+      notification.save if notification.valid?
+    end
   end
 
 end
