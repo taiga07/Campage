@@ -9,6 +9,7 @@ class RelationshipsController < ApplicationController
     @following_users = @user.following_user
     @follower_users = @user.follower_user
     # ここまで
+    @user.create_notification_follow!(current_user)
     render :relationship  #jsファイルを指定
   end
 

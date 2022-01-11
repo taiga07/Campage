@@ -5,6 +5,7 @@ class LikesController < ApplicationController
     @like = Like.new(post_id: @post.id)
     @like.user_id = current_user.id
     @like.save
+    @post.create_notification_like!(current_user)
     render :like
   end
 

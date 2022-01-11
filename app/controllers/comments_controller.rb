@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
     # commentsテーブルのpost_idにコメントする投稿のIDを格納
     @comment.post_id = @post.id
     if @comment.save
+      @comment.create_notification_comment!(current_user, @comment.id)
       # 連続で投稿した際にフラッシュメッセージが残らないよう、flash.nowとする
       flash.now[:notice] = 'コメントを投稿しました'
       #render先をcomments.js.erbに指定
