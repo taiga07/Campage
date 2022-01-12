@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'homes#top'
   get '/about' => 'homes#about'
+  get '/search' => 'searches#search'
 
 
   resources :users, only: [:show, :edit, :update] do
@@ -29,8 +30,6 @@ Rails.application.routes.draw do
   get 'posts/ranking' => 'posts#ranking'
   get 'posts/good_ranking' => 'posts#good_ranking'
   get 'posts/pv_ranking' => 'posts#pv_ranking'
-
-  resource :searches, only: [:index]
 
   resources :messages, only: [:create]
   resources :rooms, only: [:create, :show, :index]
