@@ -29,7 +29,10 @@
             <%= link_to "CONTACT", new_contacts_path %>
           </li>
           <li>
-            <%= link_to "新規登録", new_post_path %>
+            <%= link_to new_post_path do %>
+              <i class="fas fa-campground"></i>
+              <i class="fas fa-plus"></i>
+            <% end %>
           </li>
           <li>
             <%= link_to notifications_path do %>
