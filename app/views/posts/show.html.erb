@@ -43,6 +43,9 @@
       <div class="like_btn_<%= @post.id %>">
         <%= render "likes/like", post: @post %>
       </div>
+      <!--<i class="fas fa-eye">-->
+      <!--  <%#= @post.impressionist_count(:filter=>:ip_address) %>-->
+      <!--</i>-->
       <div>
         <%= @post.body %>
       </div>
