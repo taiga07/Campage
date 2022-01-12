@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   root 'homes#top'
   get '/about' => 'homes#about'
   get '/search' => 'searches#search'
-
+  get 'posts/good_ranking' => 'posts#good_ranking'
+  get 'posts/pv_ranking' => 'posts#pv_ranking'
 
   resources :users, only: [:show, :edit, :update] do
     # memberを使うことで、7つ以外のルーティングも追加している。
@@ -23,13 +24,12 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'posts/ranking' => 'posts#ranking'
+
   resources :posts do
     resource :likes, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
   end
-  get 'posts/ranking' => 'posts#ranking'
-  get 'posts/good_ranking' => 'posts#good_ranking'
-  get 'posts/pv_ranking' => 'posts#pv_ranking'
 
   resources :messages, only: [:create]
   resources :rooms, only: [:create, :show, :index]

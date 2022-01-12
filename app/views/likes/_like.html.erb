@@ -5,8 +5,6 @@
     <%= link_to post_likes_path(post.id), method: :delete, remote: true do %>
       <i class="fas fa-thumbs-up"></i>
     <% end %>
-  </div>
-  <div>
     グッド!! <%= post.likes.count %>件
   </div>
 <% else %>
@@ -15,8 +13,6 @@
     <%= link_to post_likes_path(post.id), method: :post, remote: true do %>
       <i class="far fa-thumbs-up"></i>
     <% end %>
-  </div>
-  <div>
     グッド!! <%= post.likes.count %>件
   </div>
 <% end %>
