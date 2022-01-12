@@ -23,7 +23,16 @@ $(document).on('turbolinks:load', function() {
     $('.slick').slick({
         dots: true,
         infinite: true,
-        speed: 300,
-        slidesToShow: 1
+        speed: 200,
+    });
+});
+
+$(document).on('turbolinks:load', function() {
+    $('.about-slick').slick({
+        arrows: false,
+        autoplay:true,
+        speed: 700,
+        fade:true,
+        autoplaySpeed:4000,
     });
 });
