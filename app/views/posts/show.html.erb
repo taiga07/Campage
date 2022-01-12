@@ -15,7 +15,7 @@
           <%= link_to "投稿内容の編集", edit_post_path(@post.id) %>
         </div>
         <div>
-          <%= link_to "投稿を削除", post_path(@post), method: :delete %>
+          <%= link_to "投稿を削除", post_path(@post), method: :delete, data: {confirm: "投稿を削除します。よろしいですか？"} %>
         </div>
       <% else %>
         <div class="relationship_count">

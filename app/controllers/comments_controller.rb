@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
     # commentをidやpost_idから見つけて削除する。
     Comment.find_by(id: params[:id], post_id: params[:post_id]).destroy
     # 連続で失敗した際にフラッシュメッセージが残らないよう、flash.nowとする
-    flash.now[:alert] = '投稿を削除しました'
+    flash.now[:alert] = 'コメントを削除しました'
      #render先をcomments.js.erbに指定
      #renderしたときに@postのデータがないので@postを定義
     @post = Post.find(params[:post_id])
