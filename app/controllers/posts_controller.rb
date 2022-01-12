@@ -69,7 +69,7 @@ class PostsController < ApplicationController
     #post_idが同じレコードをまとめて、post_idが同じものを数え降順に並べる。
     #（いいねテーブルに保存されているレコードを数えることでいいね数を数えることができる。）
     #上位5つを取り出し、レコードの情報をidに変更する。
-    @posts_like_ranking = Post.find(Like.group(:post_id).order('count(post_id) desc').limit(5).pluck(:post_id))
+    @posts_good_ranking = Post.find(Like.group(:post_id).order('count(post_id) desc').limit(5).pluck(:post_id))
   end
 
   def pv_ranking
@@ -77,7 +77,7 @@ class PostsController < ApplicationController
   end
 
   def good_ranking
-    @posts_like_ranking = Post.find(Like.group(:post_id).order('count(post_id) desc').pluck(:post_id))
+    @posts_good_ranking = Post.find(Like.group(:post_id).order('count(post_id) desc').pluck(:post_id))
   end
 
   private
