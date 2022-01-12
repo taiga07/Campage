@@ -1,26 +1,8 @@
 <h2>グッド!!が多い投稿</h2>
 <div>
-  <% @posts_like_ranking.each do |post| %>
-    <div>
-      <%= link_to user_path(post.user.id) do %>
-        <%= attachment_image_tag post.user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
-        <%= post.user.name %>
-      <% end %>
-      <div>
-        <%= post.title %>
-      </div>
-    </div>
-    <div class="mypage">
-      <% post.post_images.first(1).each do |image| %>
-        <%= link_to post_path(post.id) do %>
-          <%= attachment_image_tag image, :image %>
-        <% end %>
-      <% end %>
-  　</div>
-  　<div>
-  　  <%= post.likes.count %>
-  　</div>
-  <% end %>
+  <div>
+    <%= render "good_ranking", posts_good_ranking: @posts_good_ranking %>
+  </div>
   <div>
     <%= link_to "一覧で見る", posts_good_ranking_path %>
   </div>
@@ -28,27 +10,9 @@
 
 <h2>閲覧数が多い投稿</h2>
 <div>
-  <% @posts_pv_ranking.each do |post| %>
-    <div>
-      <%= link_to user_path(post.user.id) do %>
-        <%= attachment_image_tag post.user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
-        <%= post.user.name %>
-      <% end %>
-      <div>
-        <%= post.title %>
-      </div>
-    </div>
-    <div class="mypage">
-      <% post.post_images.first(1).each do |image| %>
-        <%= link_to post_path(post.id) do %>
-          <%= attachment_image_tag image, :image %>
-        <% end %>
-      <% end %>
-  　</div>
-  　<div>
-  　  <%= post.impressions_count %>
-  　</div>
-  <% end %>
+  <div>
+    <%= render "pv_ranking", posts_pv_ranking: @posts_pv_ranking %>
+  </div>
   <div>
     <%= link_to "一覧で見る", posts_pv_ranking_path %>
   </div>
