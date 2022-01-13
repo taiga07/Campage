@@ -1,0 +1,56 @@
+<%= form_with model: @user, url: user_registration_path, local: true do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <table>
+    <tr>
+      <th>
+        <h2>新規登録</h2>
+      </th>
+    </tr>
+    <tr>
+      <div class="field">
+        <th><%= f.label :表示名 %></th>
+        <td><%= f.text_field :name, autofocus: true, placeholder: "ニックネームなど" %></td>
+      </div>
+    </tr>
+    <tr>
+      <div class="field">
+        <th><%= f.label :メールアドレス %></th>
+        <td><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "campage@example.com" %></td>
+      </div>
+    </tr>
+    <tr>
+      <div class="field">
+        <th><%= f.label :電話番号（ハイフンなし） %></th>
+        <td> <%= f.text_field :phone_number,autofocus: true, placeholder: "00000000000" %></td>
+      </div>
+    </tr>
+    <tr>
+      <div class="field">
+        <th>
+          <%= f.label :パスワード %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> 文字以上)</em>
+          <% end %>
+        </th>
+        <td> <%= f.password_field :password, autocomplete: "new-password" %></td>
+      </div>
+    </tr>
+    <tr>
+      <div class="field">
+        <th><%= f.label :パスワード（確認用） %></th>
+        <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+      </div>
+    </tr>
+    <tr>
+      <th></th>
+      <div class="actions">
+        <td><%= f.submit "登録" %></td>
+      </div>
+    </tr>
+  </table>
+
+<% end %>
+
+<p>既に会員の方は</p>
+<%= render "devise/shared/links" %>

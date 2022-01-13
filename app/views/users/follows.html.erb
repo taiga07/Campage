@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div>
+      <h2>フォロー一覧</h2>
+    </div>
+  </div>
+  <% @users.each do |user| %>
+    <div class="row">
+      <%= link_to user_path(user.id) do %>
+        <%= attachment_image_tag user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
+      <% end %>
+      <%= user.name %>
+      <% if current_user == user %>
+      <% else %>
+        <div class="relationship">
+          <%= render "relationships/button", user: user %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,7 @@
+<!--class=comments_areaにrenderで指定した部分テンプレートに更新-->
+$(".comments_area").html("<%= j(render 'comments/comments', post: @post, comment: @comment) %>");
+<!--フォームを送信後フォームの値を空にする-->
+$("textarea").val('');
+
+<!--コメントの成功、失敗時に表示させてたいのでこのファイルに記述していく。-->
+$('.flash_message').html("<%= j(render 'layouts/flash') %>");

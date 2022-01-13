@@ -7,9 +7,97 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/91d36909a5.js" crossorigin="anonymous"></script>
+    <!--slickの読み込み-->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>    <!--ここまで-->
   </head>
 
   <body>
+    <header>
+      <h1>Campage</h1>
+      <% if user_signed_in? %>
+        <ul class="nav">
+          <li>
+            <%= link_to "POSTSLIST", posts_path %>
+          </li>
+          <li>
+            <%= link_to "RANKING", posts_ranking_path %>
+          </li>
+          <li>
+            <%= link_to "CONTACT", new_contacts_path %>
+          </li>
+          <li>
+            <%= link_to new_post_path do %>
+              <i class="fas fa-campground"></i>
+              <i class="fas fa-plus"></i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to notifications_path do %>
+              <% if unchecked_notifications.any? %>
+                <i class="far fa-thumbs-up"></i>
+                <i class="fas fa-circle"></i>
+              <% else %>
+                <i class="far fa-thumbs-up"></i>
+              <% end %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to user_path(current_user) do %>
+              <%= attachment_image_tag current_user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
+            <% end %>
+          </li>
+        </ul>
+        <!--ログインしていなくて、トップページ、新規登録ページ、ログインページの場合の処理-->
+      <% elsif current_page?(root_path) || current_page?(new_user_session_path) || current_page?(new_user_registration_path) %>
+        <ul class="nav">
+          <li>
+            <%=link_to "ABOUT", about_path %>
+          </li>
+          <li>
+            <%= link_to "POSTSLIST", posts_path %>
+          </li>
+          <li>
+            <%= link_to "RANKING", posts_ranking_path %>
+          </li>
+          <li>
+            <%= link_to "CONTACT", new_contacts_path %>
+          </li>
+        </ul>
+      <% else %>
+        <ul class="nav">
+          <li>
+            <%=link_to "ABOUT", about_path %>
+          </li>
+          <li>
+            <%= link_to "POSTSLIST", posts_path %>
+          </li>
+          <li>
+            <%= link_to "RANKING", posts_ranking_path %>
+          </li>
+          <li>
+            <%= link_to "CONTACT", new_contacts_path %>
+          </li>
+          <li>
+            <%= link_to "SIGNUP", new_user_registration_path %>
+          </li>
+          <li>
+            <%= link_to "LOGIN", new_user_session_path %>
+          </li>
+        </ul>
+      <%end%>
+      <div>
+        <%= render 'searches/form' %>
+      </div>
+    </header>
+    <main>
+      <!--フラッシュメッセージの部分をdivタグで囲む-->
+      <div class="flash_message">
+        <%= render 'layouts/flash' %>
+      </div>
     <%= yield %>
+    </main>
   </body>
 </html>

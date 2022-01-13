@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <h4>
+      Campageでは、キャンプ好きや興味のある方の交流の場を目指しています。<br>
+      キャンプレイアウトやグランピング体験をシェアすることで、これから始めたい方の参考となり後押しをします。<br>
+      グランピング施設を探している人やキャンプを始めたい人が簡単に情報収集できる。<br>
+      それが Campage
+    </h4>
+  </div>
+  <div class="row">
+    <% @random.each do |post| %>
+      <div class="about-slick" style="width: 300px;">
+        <% post.post_images.each do |image| %>
+          <%= link_to post_path(image.post.id) do %>
+            <%= attachment_image_tag image, :image, style: "width: 100%" %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+

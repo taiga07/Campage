@@ -1,0 +1,5 @@
+$(".messages_area").html("<%= j(render "messages/messages", messages: @messages) %>");
+
+$(".message_form").html("<%= j(render "messages/form") %>");
+
+$("textfield").val('');

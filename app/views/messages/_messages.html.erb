@@ -1,0 +1,9 @@
+<% if messages.present? %>  <!--@messagesにメッセージが入っているか確認-->
+  <% messages.each do |m| %>  <!--入っていれば取り出しひとつずつmに格納-->
+    <%= attachment_image_tag m.user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
+    <%= m.message %><br>
+    <%= m.created_at.strftime("%Y-%m-%d %H:%M")%>
+  <% end %>
+<% else %>
+  メッセージを送ってみよう！
+<% end %>

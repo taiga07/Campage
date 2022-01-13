@@ -1,0 +1,14 @@
+<div>
+  <%= @rooms.each do |room| %>
+    <div>
+      <%= link_to room_path(room) do %>
+        <h4>
+          <%= opponent_user(room) %>
+        </h4>
+        <P>
+          <%= new_message_preview(room) %>
+        </P>
+      <% end %>
+    </div>
+  <% end %>
+</div>

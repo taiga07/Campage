@@ -1,0 +1,5 @@
+<%= form_with model: @message do |f| %>
+  <%= f.text_field :message, placeholder: "メッセージを入力" %>
+  <%= f.hidden_field :room_id, value: @room.id %><!--メッセージがどのルームのものか判断するために、メッセージと一緒にroomのidも送る-->
+  <%= f.submit "送信" %>
+<% end %>
