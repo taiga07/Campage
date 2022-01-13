@@ -1,5 +1,5 @@
 <h3>通知一覧</h3>
-
+<!--通知を送ってくれたユーザーが自分の場合は通知に載せないのでここで排除-->
 <% @notifications = @notifications.where.not(visiter_id: current_user.id) %>
 
 <% if @notifications.exists? %>

@@ -36,7 +36,7 @@
           </li>
           <li>
             <%= link_to notifications_path do %>
-              <% if unchecked_notifications.any? %>
+              <% if unchecked_notifications.any? %>  <!--未確認の通知があるかどうか確認-->
                 <i class="far fa-thumbs-up"></i>
                 <i class="fas fa-circle"></i>
               <% else %>
