@@ -4,8 +4,9 @@
       <div>
         <h2>新規登録</h2>
       </div>
+      <div id="preview"></div>
       <div>
-        <%= f.attachment_field :post_images_images, multiple: true %>
+        <%= f.attachment_field :post_images_images, multiple: true, onchange: "loadImage(this);" %>
         <!--multiple: trueが画像複数投稿する際に必要になる。-->
       </div>
       <div>
