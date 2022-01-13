@@ -18,7 +18,7 @@ class PostsController < ApplicationController
 
   def index
     @user = current_user
-    @posts = Post.all
+    @posts = Post.all.order(created_at: :desc) #投稿が新しい順に取得
   end
 
   def show
