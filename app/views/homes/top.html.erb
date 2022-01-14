@@ -1,13 +1,17 @@
 <div class="container">
-  <div class="row">
-    <h3>
-      自慢のキャンプレイアウトや、<br>
-      素敵なグランピング体験をみんなでシェアしよう！
-    </h3>
+  <div class="row d-flex justify-content-center text-center">
+    <div class="text-box">
+      <h3 class="top-text">
+        自慢のキャンプレイアウトや、<br class="br-sp">
+        素敵なグランピング体験をみんなでシェアしよう！
+      </h3>
+    </div>
   </div>
-  <div class="row">
-    <%= link_to "Login", new_user_session_path %>
-    <%= link_to "Signup", new_user_registration_path %>
+  <div class="row d-flex justify-content-center mt-5">
+    <%= link_to "Login", new_user_session_path, class: "btn btn-outline-success login-btn" %>
+  </div>
+  <div class="row d-flex justify-content-center mt-3 ">
+    <%= link_to "Signup", new_user_registration_path, class: "btn btn-outline-primary" %>
   </div>
 </div>
 
