@@ -1,7 +1,15 @@
-<h3>
-  自慢のキャンプレイアウトや、<br>
-  素敵なグランピング体験をみんなでシェアしよう！
-</h3>
+<div class="container">
+  <div class="row">
+    <h3>
+      自慢のキャンプレイアウトや、<br>
+      素敵なグランピング体験をみんなでシェアしよう！
+    </h3>
+  </div>
+  <div class="row">
+    <%= link_to "Login", new_user_session_path %>
+    <%= link_to "Signup", new_user_registration_path %>
+  </div>
+</div>
 
-<%= link_to "Login", new_user_session_path %>
-<%= link_to "Signup", new_user_registration_path %>
+
+
