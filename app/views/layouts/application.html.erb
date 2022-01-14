@@ -5,92 +5,80 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <!--slickの読み込み-->
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+
+    <!--ここまで-->
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/91d36909a5.js" crossorigin="anonymous"></script>
-    <!--slickの読み込み-->
-
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>    <!--ここまで-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=The+Nautigal:wght@700&display=swap" rel="stylesheet">
   </head>
 
   <body>
-    <header>
-      <%= link_to root_path do %>
-        <h1>Campage</h1>
-      <% end %>
-      <% if user_signed_in? %>
-        <ul class="nav">
-          <li>
-            <%= link_to "POSTSLIST", posts_path %>
-          </li>
-          <li>
-            <%= link_to "RANKING", posts_ranking_path %>
-          </li>
-          <li>
-            <%= link_to "CONTACT", new_contacts_path %>
-          </li>
-          <li>
-            <%= link_to new_post_path do %>
-              <i class="fas fa-campground"></i>
-              <i class="fas fa-plus"></i>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to notifications_path do %>
-              <% if unchecked_notifications.any? %>  <!--未確認の通知があるかどうか確認-->
-                <i class="far fa-thumbs-up"></i>
-                <i class="fas fa-circle"></i>
-              <% else %>
-                <i class="far fa-thumbs-up"></i>
-              <% end %>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to user_path(current_user) do %>
-              <%= attachment_image_tag current_user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
-            <% end %>
-          </li>
-        </ul>
-        <!--ログインしていなくて、トップページ、新規登録ページ、ログインページの場合の処理-->
-      <% elsif current_page?(root_path) || current_page?(new_user_session_path) || current_page?(new_user_registration_path) %>
-        <ul class="nav">
-          <li>
-            <%=link_to "ABOUT", about_path %>
-          </li>
-          <li>
-            <%= link_to "POSTSLIST", posts_path %>
-          </li>
-          <li>
-            <%= link_to "RANKING", posts_ranking_path %>
-          </li>
-          <li>
-            <%= link_to "CONTACT", new_contacts_path %>
-          </li>
-        </ul>
-      <% else %>
-        <ul class="nav">
-          <li>
-            <%=link_to "ABOUT", about_path %>
-          </li>
-          <li>
-            <%= link_to "POSTSLIST", posts_path %>
-          </li>
-          <li>
-            <%= link_to "RANKING", posts_ranking_path %>
-          </li>
-          <li>
-            <%= link_to "CONTACT", new_contacts_path %>
-          </li>
-          <li>
-            <%= link_to "SIGNUP", new_user_registration_path %>
-          </li>
-          <li>
-            <%= link_to "LOGIN", new_user_session_path %>
-          </li>
-        </ul>
-      <%end%>
+    <header class="sticky-top">
+      <nav class="navbar navbar-expand-lg">
+        <%= link_to root_path, class: "site-name" do %>
+          <h1>Campage</h1>
+        <% end %>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+          <% if user_signed_in? %>
+            <ul class="navbar-nav">
+              <li class="nav-item"><%= link_to "POSTSLIST", posts_path, class: "nav-link" %></li>
+              <li class="nav-item"><%= link_to "RANKING", posts_ranking_path, class: "nav-link" %></li>
+              <li class="nav-item"><%= link_to "CONTACT", new_contacts_path, class: "nav-link" %></li>
+              <li class="nav-item">
+                <%= link_to new_post_path, class: "nav-link" do %>
+                  <i class="fas fa-campground"></i>
+                  <i class="fas fa-plus"></i>
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to notifications_path, class: "nav-link" do %>
+                  <% if unchecked_notifications.any? %>  <!--未確認の通知があるかどうか確認-->
+                    <i class="far fa-thumbs-up"></i>
+                    <i class="fas fa-circle"></i>
+                  <% else %>
+                    <i class="far fa-thumbs-up"></i>
+                  <% end %>
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to user_path(current_user), class: "nav-link" do %>
+                  <%= attachment_image_tag current_user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
+                <% end %>
+              </li>
+            </ul>
+            <!--ログインしていなくて、トップページ、新規登録ページ、ログインページの場合の処理-->
+          <% elsif current_page?(root_path) || current_page?(new_user_session_path) || current_page?(new_user_registration_path) %>
+            <ul class="navbar-nav">
+              <li class="nav-item"><%=link_to "ABOUT", about_path, class: "nav-link" %></li>
+              <li class="nav-item"><%= link_to "POSTSLIST", posts_path, class: "nav-link" %></li>
+              <li class="nav-item"><%= link_to "RANKING", posts_ranking_path, class: "nav-link" %></li>
+              <li class="nav-item"><%= link_to "CONTACT", new_contacts_path, class: "nav-link" %></li>
+            </ul>
+          <% else %>
+            <ul class="navbar-nav">
+              <li class="nav-item"><%=link_to "ABOUT", about_path, class: "nav-link" %></li>
+              <li class="nav-item"><%= link_to "POSTSLIST", posts_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item"><%= link_to "RANKING", posts_ranking_path, class: "nav-link" %></li>
+              <li class="nav-item"><%= link_to "CONTACT", new_contacts_path, class: "nav-link" %></li>
+              <li class="nav-item"><%= link_to "SIGNUP", new_user_registration_path, class: "nav-link" %></li>
+              <li class="nav-item"><%= link_to "LOGIN", new_user_session_path, class: "nav-link" %></li>
+            </ul>
+          <%end%>
+        </div>
+      </nav>
       <div>
         <%= render 'searches/form' %>
       </div>

@@ -1,6 +1,6 @@
 <%= form_with url: search_path, method: :get, local: true do |f| %>
   <%= f.search_field :content, placeholder: "検索ワード" %>
-  <%= f.select :model, {'人物': 'user', '投稿': 'post'}, { include_blank: '選択してください'} %>
-  <%= f.select :method, {'完全一致': 'perfect', '部分一致': 'partial'}, { include_blank: '選択してください'} %>
+  <%= f.select :model, {'人物': 'user', '投稿': 'post'}, { include_blank: '選択'} %>
+  <%= f.select :method, {'完全一致': 'perfect', '部分一致': 'partial'}, { include_blank: '選択'} %>
   <%= f.submit "検索" %>
 <% end %>
