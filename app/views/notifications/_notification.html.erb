@@ -5,8 +5,8 @@
   <%= link_to user_path(visiter) do %>
     <%= attachment_image_tag visiter, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
     <%= visiter.name %>
-    <%= "さんが" %>
   <% end %>
+  <%= "さんが" %>
 
   <% case notification.action %>
     <% when 'follow' then %>
@@ -30,8 +30,8 @@
       </p>
   <% end %>
   <div>
-    <%= time_ago_in_words(notification.created_at).upcase %>
-    <%= "前" %>
+    <i class="far fa-clock clock-icon"></i>
+    <%= time_ago_in_words(notification.created_at).upcase %>前
   </div>
 </div>
 

@@ -18,4 +18,8 @@
 　<div>
 　  <%= post.impressions_count %>
 　</div>
+　<div>
+　  <i class="far fa-clock clock-icon"></i>
+    <%= time_ago_in_words(post.created_at) %>前
+　</div>
 <% end %>

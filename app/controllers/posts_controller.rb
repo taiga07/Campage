@@ -28,15 +28,19 @@ class PostsController < ApplicationController
     @following_users = @user.following_user  #そのユーザーがフォローした相手を格納
     @follower_users = @user.follower_user  #そのユーザーがフォローされている相手を格納
 
-    @self_room = Entry.where(user_id: current_user.id).pluck(:room_id)
-    @target_room = Entry.where(user_id: @user.id).pluck(:room_id)
-    @roomid = @self_room & @target_room
-    if @roomid.blank?
-      @room = Room.new  #新しいインスタンスを生成
-      @entry = Entry.new  #新しいインスタンスを生成
-    else
-      @isroom = true
+    # DM機能
+    if user_signed_in?
+      @self_room = Entry.where(user_id: current_user.id).pluck(:room_id)
+      @target_room = Entry.where(user_id: @user.id).pluck(:room_id)
+      @roomid = @self_room & @target_room
+      if @roomid.blank?
+        @room = Room.new  #新しいインスタンスを生成
+        @entry = Entry.new  #新しいインスタンスを生成
+      else
+        @isroom = true
+      end
     end
+    # ここまで
 
     impressionist(@post, nil, unique: [:ip_address])
 
