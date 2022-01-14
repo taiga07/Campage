@@ -5,15 +5,19 @@ class UsersController < ApplicationController
     @posts = @user.posts  #そのユーザーに紐づいた投稿を@postsに格納
     @following_users = @user.following_user  #そのユーザーがフォローした相手を格納
     @follower_users = @user.follower_user  #そのユーザーがフォローされている相手を格納
-    
-    @self_room = Entry.where(user_id: current_user.id).pluck(:room_id)
-    @target_room = Entry.where(user_id: params[:id]).pluck(:room_id)
-    @roomid = @self_room & @target_room
-    if @roomid.blank?
-      @room = Room.new  #新しいインスタンスを生成
-      @entry = Entry.new  #新しいインスタンスを生成
-    else
-      @isroom = true
+
+    if user_signed_in?
+      # DM機能
+      @self_room = Entry.where(user_id: current_user.id).pluck(:room_id)
+      @target_room = Entry.where(user_id: params[:id]).pluck(:room_id)
+      @roomid = @self_room & @target_room
+      if @roomid.blank?
+        @room = Room.new  #新しいインスタンスを生成
+        @entry = Entry.new  #新しいインスタンスを生成
+      else
+        @isroom = true
+      end
+      # ここまで
     end
   end
 

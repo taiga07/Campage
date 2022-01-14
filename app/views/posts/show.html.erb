@@ -49,6 +49,10 @@
       <div>
         <%= @post.body %>
       </div>
+      <div>
+        <i class="far fa-clock clock-icon"></i>
+        <%= time_ago_in_words(@post.created_at) %>前
+      </div>
     </div>
     <div class="col-lg-4">
       <!--jsファイルに処理を記述するためにクラス名を記載-->

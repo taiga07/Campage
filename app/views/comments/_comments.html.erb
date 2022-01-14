@@ -6,7 +6,9 @@
     <%= comment.user.name %>
   </div>
   <div>
-    <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+    <%= comment.comment %>
+    <i class="far fa-clock clock-icon"></i>
+    <%= time_ago_in_words(comment.created_at) %>前
     <% if comment.user == current_user %>
       <!--link_toには,remote: trueを追加することでjsファイルを探してくれる。-->
       <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote: true %>

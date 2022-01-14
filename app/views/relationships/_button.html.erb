@@ -1,10 +1,16 @@
-<% if current_user.following?(user) %>
-  <div>
-    <%= link_to "フォロー中", user_relationships_path(user.id), method: :delete, remote: true %>
-  </div>
+<% if user_signed_in? %>
+  <% if current_user.following?(user) %>
+    <div>
+      <%= link_to "フォロー中", user_relationships_path(user.id), method: :delete, remote: true %>
+    </div>
+  <% else %>
+    <div>
+      <%= link_to "フォロー", user_relationships_path(user.id), method: :POST, remote: true %>
+    </div>
+  <% end %>
 <% else %>
   <div>
-    <%= link_to "フォロー", user_relationships_path(user.id), method: :POST, remote: true %>
+    <%= link_to "フォロー", new_user_session_path, data: {confirm: "フォローするにはログインが必要です。ページを移動しますか？"} %>
   </div>
 <% end %>
 
