@@ -63,7 +63,7 @@
                 </li>
               </ul>
             <% else %>
-              <ul class="navbar-nav">
+              <ul class="navbar-nav d-flex align-items-center">
                 <li class="nav-item"><%= link_to "POSTSLIST", posts_path, class: "nav-link" %></li>
                 <li class="nav-item"><%= link_to "RANKING", posts_ranking_path, class: "nav-link" %></li>
                 <li class="nav-item"><%= link_to "CONTACT", new_contacts_path, class: "nav-link" %></li>
@@ -96,14 +96,14 @@
             <% end %>
             <!--ログインしていなくて、トップページ、新規登録ページ、ログインページの場合の処理-->
           <% elsif current_page?(root_path) || current_page?(new_user_session_path) || current_page?(new_user_registration_path) %>
-            <ul class="navbar-nav">
+            <ul class="navbar-nav d-flex align-items-center">
               <li class="nav-item"><%=link_to "ABOUT", about_path, class: "nav-link" %></li>
               <li class="nav-item"><%= link_to "POSTSLIST", posts_path, class: "nav-link" %></li>
               <li class="nav-item"><%= link_to "RANKING", posts_ranking_path, class: "nav-link" %></li>
               <li class="nav-item"><%= link_to "CONTACT", new_contacts_path, class: "nav-link" %></li>
             </ul>
           <% else %>
-            <ul class="navbar-nav">
+            <ul class="navbar-nav d-flex align-items-center">
               <li class="nav-item"><%=link_to "ABOUT", about_path, class: "nav-link" %></li>
               <li class="nav-item"><%= link_to "POSTSLIST", posts_path, class: "nav-link" %></li>
               <li class="nav-item"><%= link_to "RANKING", posts_ranking_path, class: "nav-link" %></li>
@@ -115,7 +115,7 @@
         </div>
       </nav>
       <% unless current_page?(root_path) || current_page?(about_path) || current_page?(new_user_session_path) || current_page?(new_user_registration_path) %>
-        <div class="d-flex justify-content-end">
+        <div class="d-flex justify-content-end mr-3">
           <%= render 'searches/form' %>
         </div>
       <% end %>
