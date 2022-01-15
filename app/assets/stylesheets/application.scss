@@ -29,7 +29,7 @@
   background-position: center;
 }
 
-
+// ヘッダー
 .header {
   position: relative;
 }
@@ -65,7 +65,7 @@
   padding-top: 0rem;
   color: #CC9900;
 }
-
+// ここまで
 // フッター下に固定
 body {
   display: flex;
@@ -77,7 +77,7 @@ main {
   flex: 1;
 }
 // ここまで
-
+// トップ、アバウト、devise
 .text-box {
   margin: 70px;
 }
@@ -92,33 +92,31 @@ main {
 .about-slick {
   width: 250px;
 }
-
-.mypage img {
-  width: 33%;
-  height: auto;
-}
-
+// ここまで
+// 検索一覧
 .search-image img {
   width: 33%;
   height: auto;
 }
-
+// ここまで
+// 新規投稿
 #preview img {
   width: 25%;
   height: auto;
 }
-
-
+// ここまで
+// slick設定
 .slick-prev:before, .slick-next:before {
   color: #000;/*黒にする*/
   opacity: .40;/*デフォルトは.75が指定されている*/
 }
-
-.table th,
-.table td {
-  border:none;
+.slick{
+  width: 600px;
 }
-
+.slick img{
+  width: 100%;
+}
+// ここまで
 // 投稿一覧
 .post-index {
   display: flex;
@@ -154,17 +152,40 @@ main {
 .post-body{
   width: 100%;
 }
-.slick{
-  width: 600px;
+
+// ここまで
+// マイページ
+.user-inf{
+  display: flex;
+  padding: 10px 30px;
 }
-.slick img{
-  width: 100%;
+.mypage img {
+  width: 33%;
+  height: auto;
+  margin-bottom: 4px;
+}
+.row-box, .profile-image{
+  margin-left: 60px;
+}
+.row-box a{
+  font-size: 12pt;
+  color: black;
+}
+.rowlist{
+  margin: 0 40px 20px 0;
+}
+.relationship_count{
+  display: flex;
 }
 // ここまで
 
 
 
 
+.table th,
+.table td {
+  border:none;
+}
 
 @media screen and (max-width: 420px){
 .br-sp {display: none; }
