@@ -5,11 +5,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <!--slickの読み込み-->
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
-
-    <!--ここまで-->
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/91d36909a5.js" crossorigin="anonymous"></script>
@@ -20,8 +17,8 @@
     <link href="https://fonts.googleapis.com/css2?family=The+Nautigal:wght@700&display=swap" rel="stylesheet">
   </head>
 
-  <body>
-    <header class="sticky-top">
+  <body class="<%= controller.controller_name %>">
+    <header class="header">
       <nav class="navbar navbar-expand-lg">
         <%= link_to root_path, class: "site-name" do %>
           <h1>Campage</h1>
@@ -34,22 +31,26 @@
           <% if user_signed_in? %>
             <!--topとaboutの場合-->
             <% if current_page?(root_path) || current_page?(about_path) %>
-              <ul class="navbar-nav">
+              <ul class="navbar-nav d-flex align-items-center">
                 <li class="nav-item"><%=link_to "ABOUT", about_path, class: "nav-link" %></li>
                 <li class="nav-item"><%= link_to "POSTSLIST", posts_path, class: "nav-link" %></li>
                 <li class="nav-item"><%= link_to "RANKING", posts_ranking_path, class: "nav-link" %></li>
                 <li class="nav-item"><%= link_to "CONTACT", new_contacts_path, class: "nav-link" %></li>
                 <li class="nav-item">
                   <%= link_to new_post_path, class: "nav-link" do %>
-                    <i class="fas fa-campground"></i>
-                    <i class="fas fa-plus"></i>
+                    <span class="fa-stack">
+                      <i class="fas fa-campground n-camp fa-stack"></i>
+                      <i class="fas fa-plus n-plus fa-stack-1x"></i>
+                    </span>
                   <% end %>
                 </li>
                 <li class="nav-item">
                   <%= link_to notifications_path, class: "nav-link" do %>
                     <% if unchecked_notifications.any? %>  <!--未確認の通知があるかどうか確認-->
-                      <i class="far fa-thumbs-up"></i>
-                      <i class="fas fa-circle"></i>
+                      <span class="fa-stack">
+                        <i class="far fa-thumbs-up n-good fa-stack"></i>
+                        <i class="fas fa-circle n-circle fa-stack-1x"></i>
+                      </span>
                     <% else %>
                       <i class="far fa-thumbs-up"></i>
                     <% end %>
@@ -62,21 +63,25 @@
                 </li>
               </ul>
             <% else %>
-              <ul class="navbar-nav">
+              <ul class="navbar-nav d-flex align-items-center">
                 <li class="nav-item"><%= link_to "POSTSLIST", posts_path, class: "nav-link" %></li>
                 <li class="nav-item"><%= link_to "RANKING", posts_ranking_path, class: "nav-link" %></li>
                 <li class="nav-item"><%= link_to "CONTACT", new_contacts_path, class: "nav-link" %></li>
                 <li class="nav-item">
                   <%= link_to new_post_path, class: "nav-link" do %>
-                    <i class="fas fa-campground"></i>
-                    <i class="fas fa-plus"></i>
+                    <span class="fa-stack">
+                      <i class="fas fa-campground n-camp fa-stack"></i>
+                      <i class="fas fa-plus n-plus fa-stack-1x"></i>
+                    </span>
                   <% end %>
                 </li>
                 <li class="nav-item">
                   <%= link_to notifications_path, class: "nav-link" do %>
                     <% if unchecked_notifications.any? %>  <!--未確認の通知があるかどうか確認-->
-                      <i class="far fa-thumbs-up"></i>
-                      <i class="fas fa-circle"></i>
+                      <span class="fa-stack">
+                        <i class="far fa-thumbs-up n-good fa-stack"></i>
+                        <i class="fas fa-circle n-circle fa-stack-1x"></i>
+                      </span>
                     <% else %>
                       <i class="far fa-thumbs-up"></i>
                     <% end %>
@@ -91,14 +96,14 @@
             <% end %>
             <!--ログインしていなくて、トップページ、新規登録ページ、ログインページの場合の処理-->
           <% elsif current_page?(root_path) || current_page?(new_user_session_path) || current_page?(new_user_registration_path) %>
-            <ul class="navbar-nav">
+            <ul class="navbar-nav d-flex align-items-center">
               <li class="nav-item"><%=link_to "ABOUT", about_path, class: "nav-link" %></li>
               <li class="nav-item"><%= link_to "POSTSLIST", posts_path, class: "nav-link" %></li>
               <li class="nav-item"><%= link_to "RANKING", posts_ranking_path, class: "nav-link" %></li>
               <li class="nav-item"><%= link_to "CONTACT", new_contacts_path, class: "nav-link" %></li>
             </ul>
           <% else %>
-            <ul class="navbar-nav">
+            <ul class="navbar-nav d-flex align-items-center">
               <li class="nav-item"><%=link_to "ABOUT", about_path, class: "nav-link" %></li>
               <li class="nav-item"><%= link_to "POSTSLIST", posts_path, class: "nav-link" %></li>
               <li class="nav-item"><%= link_to "RANKING", posts_ranking_path, class: "nav-link" %></li>
@@ -109,8 +114,8 @@
           <%end%>
         </div>
       </nav>
-      <% unless current_page?(root_path) || current_page?(about_path) %>
-        <div class="d-flex justify-content-end">
+      <% unless current_page?(root_path) || current_page?(about_path) || current_page?(new_user_session_path) || current_page?(new_user_registration_path) %>
+        <div class="d-flex justify-content-end mr-3">
           <%= render 'searches/form' %>
         </div>
       <% end %>

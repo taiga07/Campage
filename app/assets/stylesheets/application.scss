@@ -22,7 +22,15 @@
   box-sizing: border-box;
 }
 
-.sticky-top {
+
+.homes {
+  background: image-url('backimage.JPG');
+  background-size: cover;
+  background-position: center;
+}
+
+
+.header {
   position: relative;
 }
 
@@ -47,10 +55,18 @@
   border-color: #FF9900;
 }
 
-@media screen and (max-width: 420px){
-.br-sp {display: none; }
+.n-camp, .n-good {
+  font-size: 1em;
 }
 
+.n-plus, .n-circle {
+  position: absolute;
+  padding-left: 0.1rem;
+  padding-top: 0rem;
+  color: #CC9900;
+}
+
+// フッター下に固定
 body {
   display: flex;
   flex-flow: column;
@@ -60,12 +76,17 @@ body {
 main {
   flex: 1;
 }
+// ここまで
 
 .text-box {
   margin: 70px;
 }
 .top-text {
   color: #FFFFFF;
+}
+
+.login, .signin {
+  margin: 70px 0;
 }
 
 .about-slick {
@@ -91,4 +112,60 @@ main {
 .slick-prev:before, .slick-next:before {
   color: #000;/*黒にする*/
   opacity: .40;/*デフォルトは.75が指定されている*/
+}
+
+.table th,
+.table td {
+  border:none;
+}
+
+// 投稿一覧
+.post-index {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+.sideber, .post-box {
+  margin-top: 20px;
+}
+.sideber{
+  margin-right: 50px;
+  position: sticky;
+  top: 70px;
+}
+.post-box{
+  width: 600px;
+}
+.post-boxes{
+  margin-bottom: 50px;
+  border-width: 1px;
+	border-color: #CCCCCC;
+	border-style: solid;
+}
+.user-name{
+  border-width: 1px;
+	border-color: #CCCCCC;
+	border-bottom-style: solid;
+	font-weight: bold;
+}
+.user-name, .post-title, .like-btn, .post-body, .post-comment-link, .time{
+  padding: 2px 15px;
+}
+.post-body{
+  width: 100%;
+}
+.slick{
+  width: 600px;
+}
+.slick img{
+  width: 100%;
+}
+// ここまで
+
+
+
+
+
+@media screen and (max-width: 420px){
+.br-sp {display: none; }
 }
