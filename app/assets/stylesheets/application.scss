@@ -22,7 +22,15 @@
   box-sizing: border-box;
 }
 
-.sticky-top {
+
+.homes {
+  background: image-url('backimage.JPG');
+  background-size: cover;
+  background-position: center;
+}
+
+
+.header {
   position: relative;
 }
 
@@ -79,6 +87,10 @@ main {
   color: #FFFFFF;
 }
 
+.login, .signin {
+  margin: 70px 0;
+}
+
 .about-slick {
   width: 250px;
 }
@@ -102,4 +114,9 @@ main {
 .slick-prev:before, .slick-next:before {
   color: #000;/*黒にする*/
   opacity: .40;/*デフォルトは.75が指定されている*/
+}
+
+.table th,
+.table td {
+  border:none;
 }

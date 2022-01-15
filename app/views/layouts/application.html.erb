@@ -5,11 +5,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <!--slickの読み込み-->
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
-
-    <!--ここまで-->
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/91d36909a5.js" crossorigin="anonymous"></script>
@@ -20,8 +17,8 @@
     <link href="https://fonts.googleapis.com/css2?family=The+Nautigal:wght@700&display=swap" rel="stylesheet">
   </head>
 
-  <body>
-    <header class="sticky-top">
+  <body class="<%= controller.controller_name %>">
+    <header class="header">
       <nav class="navbar navbar-expand-lg">
         <%= link_to root_path, class: "site-name" do %>
           <h1>Campage</h1>
@@ -117,7 +114,7 @@
           <%end%>
         </div>
       </nav>
-      <% unless current_page?(root_path) || current_page?(about_path) %>
+      <% unless current_page?(root_path) || current_page?(about_path) || current_page?(new_user_session_path) || current_page?(new_user_registration_path) %>
         <div class="d-flex justify-content-end">
           <%= render 'searches/form' %>
         </div>

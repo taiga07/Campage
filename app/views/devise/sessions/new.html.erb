@@ -1,36 +1,43 @@
-<%= form_with model: @user, url: user_session_path, local: true do |f| %>
-  <table>
-    <tr>
-      <div class="field">
-        <th><%= f.label :表示名 %></th>
-        <td><%= f.text_field :name, autofocus: true %></td>
-      </div>
-    </tr>
-    <tr>
-      <div class="field">
-        <th><%= f.label :password %></th>
-        <td><%= f.password_field :password, autocomplete: "current-password" %></td>
-      </div>
-    </tr>
-    <tr>
-      <% if devise_mapping.rememberable? %>
-      <div class="field">
-        <th></th>
-        <th>
-          <%= f.check_box :remember_me %>
-          <%= f.label :remember_me %>
-        </th>
-      </div>
-      <% end %>
-    </tr>
-    <tr>
-      <th></th>
-      <div class="actions">
-        <td><%= f.submit "ログイン" %></td>
-      </div>
-    </tr>
-  </table>
-<% end %>
-
-<p>会員登録がまだの方は</p>
-<%= render "devise/shared/links" %>
+<div class="container">
+  <div class="row d-flex align-items-center justify-content-center login">
+    <%= form_with model: @user, url: user_session_path, local: true do |f| %>
+      <table class="table">
+        <tr>
+          <div class="field">
+            <th><%= f.label :表示名 %></th>
+            <td><%= f.text_field :name, autofocus: true %></td>
+          </div>
+        </tr>
+        <tr>
+          <div class="field">
+            <th><%= f.label :password %></th>
+            <td><%= f.password_field :password, autocomplete: "current-password" %></td>
+          </div>
+        </tr>
+        <tr>
+          <% if devise_mapping.rememberable? %>
+          <div class="field">
+            <th></th>
+            <th>
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </th>
+          </div>
+          <% end %>
+        </tr>
+        <tr>
+          <th></th>
+          <div class="actions">
+            <td><%= f.submit "ログイン" %></td>
+          </div>
+        </tr>
+      </table>
+    <% end %>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <p>
+      会員登録がまだの方は
+      <%= render "devise/shared/links" %>
+    </p>
+  </div>
+</div>
