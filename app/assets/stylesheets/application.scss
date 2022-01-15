@@ -65,6 +65,12 @@
   padding-top: 0rem;
   color: #CC9900;
 }
+.header-image a img, .user-name a img{
+  width:  50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
 // ここまで
 // フッター下に固定
 body {
@@ -146,6 +152,13 @@ main {
 	border-bottom-style: solid;
 	font-weight: bold;
 }
+
+.sideber a img{
+  width:  70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+}
 .user-name, .post-title, .like-btn, .post-body, .post-comment-link, .time{
   padding: 2px 15px;
 }
@@ -167,6 +180,9 @@ main {
 .row-box, .profile-image{
   margin-left: 60px;
 }
+.row-box{
+  width: 1024px;
+}
 .row-box a{
   font-size: 12pt;
   color: black;
@@ -176,6 +192,21 @@ main {
 }
 .relationship_count{
   display: flex;
+}
+.profile-image img{
+  width:  160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+// ここまで
+// 会員編集ページ
+th img{
+  width:  100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 // ここまで
 

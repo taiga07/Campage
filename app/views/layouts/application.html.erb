@@ -56,7 +56,7 @@
                     <% end %>
                   <% end %>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item header-image">
                   <%= link_to user_path(current_user), class: "nav-link" do %>
                     <%= attachment_image_tag current_user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
                   <% end %>
@@ -87,7 +87,7 @@
                     <% end %>
                   <% end %>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item header-image">
                   <%= link_to user_path(current_user), class: "nav-link" do %>
                     <%= attachment_image_tag current_user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
                   <% end %>
