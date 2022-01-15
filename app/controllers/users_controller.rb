@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])  #ユーザーの情報を取得
-    @posts = @user.posts  #そのユーザーに紐づいた投稿を@postsに格納
+    @posts = @user.posts.order(created_at: :desc)  #そのユーザーに紐づいた投稿を新しい順に@postsに格納
     @following_users = @user.following_user  #そのユーザーがフォローした相手を格納
     @follower_users = @user.follower_user  #そのユーザーがフォローされている相手を格納
 
