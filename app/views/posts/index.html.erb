@@ -3,7 +3,7 @@
     <div class="sideber">
     <% if user_signed_in? %>
       <%= link_to user_path(@user.id) do %>
-        <%= attachment_image_tag current_user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
+        <%= attachment_image_tag current_user, :profile_image, size: '70x70', fallback: "no_image.jpg" %>
       <% end %>
       <%= @user.name %>
     <% end %>
