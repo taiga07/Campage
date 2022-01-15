@@ -34,22 +34,26 @@
           <% if user_signed_in? %>
             <!--topとaboutの場合-->
             <% if current_page?(root_path) || current_page?(about_path) %>
-              <ul class="navbar-nav">
+              <ul class="navbar-nav d-flex align-items-center">
                 <li class="nav-item"><%=link_to "ABOUT", about_path, class: "nav-link" %></li>
                 <li class="nav-item"><%= link_to "POSTSLIST", posts_path, class: "nav-link" %></li>
                 <li class="nav-item"><%= link_to "RANKING", posts_ranking_path, class: "nav-link" %></li>
                 <li class="nav-item"><%= link_to "CONTACT", new_contacts_path, class: "nav-link" %></li>
                 <li class="nav-item">
                   <%= link_to new_post_path, class: "nav-link" do %>
-                    <i class="fas fa-campground"></i>
-                    <i class="fas fa-plus"></i>
+                    <span class="fa-stack">
+                      <i class="fas fa-campground n-camp fa-stack"></i>
+                      <i class="fas fa-plus n-plus fa-stack-1x"></i>
+                    </span>
                   <% end %>
                 </li>
                 <li class="nav-item">
                   <%= link_to notifications_path, class: "nav-link" do %>
                     <% if unchecked_notifications.any? %>  <!--未確認の通知があるかどうか確認-->
-                      <i class="far fa-thumbs-up"></i>
-                      <i class="fas fa-circle"></i>
+                      <span class="fa-stack">
+                        <i class="far fa-thumbs-up n-good fa-stack"></i>
+                        <i class="fas fa-circle n-circle fa-stack-1x"></i>
+                      </span>
                     <% else %>
                       <i class="far fa-thumbs-up"></i>
                     <% end %>
@@ -68,15 +72,19 @@
                 <li class="nav-item"><%= link_to "CONTACT", new_contacts_path, class: "nav-link" %></li>
                 <li class="nav-item">
                   <%= link_to new_post_path, class: "nav-link" do %>
-                    <i class="fas fa-campground"></i>
-                    <i class="fas fa-plus"></i>
+                    <span class="fa-stack">
+                      <i class="fas fa-campground n-camp fa-stack"></i>
+                      <i class="fas fa-plus n-plus fa-stack-1x"></i>
+                    </span>
                   <% end %>
                 </li>
                 <li class="nav-item">
                   <%= link_to notifications_path, class: "nav-link" do %>
                     <% if unchecked_notifications.any? %>  <!--未確認の通知があるかどうか確認-->
-                      <i class="far fa-thumbs-up"></i>
-                      <i class="fas fa-circle"></i>
+                      <span class="fa-stack">
+                        <i class="far fa-thumbs-up n-good fa-stack"></i>
+                        <i class="fas fa-circle n-circle fa-stack-1x"></i>
+                      </span>
                     <% else %>
                       <i class="far fa-thumbs-up"></i>
                     <% end %>

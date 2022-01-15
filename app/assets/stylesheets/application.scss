@@ -47,6 +47,17 @@
   border-color: #FF9900;
 }
 
+.n-camp, .n-good {
+  font-size: 1em;
+}
+
+.n-plus, .n-circle {
+  position: absolute;
+  padding-left: 0.1rem;
+  padding-top: 0rem;
+  color: #CC9900;
+}
+
 @media screen and (max-width: 420px){
 .br-sp {display: none; }
 }
