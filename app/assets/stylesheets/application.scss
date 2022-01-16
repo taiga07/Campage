@@ -115,6 +115,8 @@ main {
 // }
 .slick img{
   width: 100%;
+  // box-sizing: border-box;
+  // height: auto;
 }
 // ここまで
 // 新規投稿ページ
@@ -122,11 +124,11 @@ main {
   margin-bottom: 35px;
 }
 .title-form input{
-  width: 333px;
+  width: 320px;
   height: 40px;
 }
 .body-form textarea{
-  width: 333px;
+  width: 320px;
   height: 200px;
 }
 .share-botton{
@@ -162,7 +164,7 @@ main {
   border-radius: 50%;
   object-fit: cover;
 }
-.post-boxes, .postnew, .post-box{
+.post-boxes, .postnew, .post-box, .postedit{
   margin-bottom: 50px;
   border-width: 1px;
 	border-color: #CCCCCC;
@@ -193,8 +195,8 @@ main {
 }
 // ここまで
 // 投稿詳細ページ
-.postshow{
-  margin-top: 40px;
+.postshow, .postedit{
+  margin-top: 30px;
 }
 .postshow-user, .user-introduction, .post-edit, .post-destroy{
   margin-bottom: 20px;

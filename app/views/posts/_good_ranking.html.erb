@@ -1,25 +1,28 @@
 <% posts_good_ranking.each do |post| %>
-  <div>
-    <%= link_to user_path(post.user.id) do %>
-      <%= attachment_image_tag post.user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
-      <%= post.user.name %>
-    <% end %>
+  <div class="col-lg-3">
+    <div class="user-name">
+      <%= link_to user_path(post.user.id) do %>
+        <%= attachment_image_tag post.user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
+        <%= post.user.name %>
+      <% end %>
+    </div>
     <div>
       <%= post.title %>
     </div>
-  </div>
-  <div class="mypage">
-    <% post.post_images.first(1).each do |image| %>
-      <%= link_to post_path(post.id) do %>
-        <%= attachment_image_tag image, :image %>
+
+    <div class="mypage">
+      <% post.post_images.first(1).each do |image| %>
+        <%= link_to post_path(post.id) do %>
+          <%= attachment_image_tag image, :image %>
+        <% end %>
       <% end %>
-    <% end %>
-　</div>
-　<div>
-　  <%= post.likes.count %>
-　</div>
-　<div>
-　  <i class="far fa-clock clock-icon"></i>
-    <%= time_ago_in_words(post.created_at) %>前
-　</div>
+  　</div>
+  　<div>
+  　  <%= post.likes.count %>
+  　</div>
+  　<div>
+  　  <i class="far fa-clock clock-icon"></i>
+      <%= time_ago_in_words(post.created_at) %>前
+  　</div>
+  </div>
 <% end %>
