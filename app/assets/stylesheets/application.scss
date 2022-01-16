@@ -20,6 +20,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  word-wrap : break-word;
 }
 
 
@@ -113,7 +114,7 @@ main {
 // .slick{
 //   width: 600px;
 // }
-.slick img{
+.slick img, .ranking-post img{
   width: 100%;
   // box-sizing: border-box;
   // height: auto;
@@ -173,7 +174,7 @@ main {
 .post-boxes{
   margin: 0 20px 40px 20px;
 }
-.user-name{
+.user-name, .ranking-user-name{
   border-width: 1px;
 	border-color: #CCCCCC;
 	border-bottom-style: solid;
@@ -181,9 +182,6 @@ main {
 }
 .user-name, .post-title, .like-btn, .like-btn2, .post-like, .post-body, .post-comment-link, .time{
   padding: 2px 15px;
-}
-.post-body, .comment-area{
-  word-wrap : break-word;
 }
 .like-btn{
   font-size: 1.5em;
@@ -231,7 +229,7 @@ main {
 .row-box{
   width: 1024px;
 }
-.row-box a, .comment-user a{
+.row-box a, .comment-user a, .ranking-user-name a, .ranking-list a{
   font-size: 12pt;
   color: black;
 }
@@ -255,6 +253,19 @@ th img{
   height: 100px;
   border-radius: 50%;
   object-fit: cover;
+}
+// ここまで
+// ランキング
+.ranking-user-name a img{
+  width:  40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.postranking{
+  border-width: 1px;
+	border-color: #CCCCCC;
+	border-style: solid;
 }
 // ここまで
 
