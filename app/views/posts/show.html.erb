@@ -1,21 +1,25 @@
-<div class="container">
+<div class="container postshow">
   <div class="row">
     <div class="col-lg-3">
-      <div>
+      <div class="postshow-user">
         <%= link_to user_path(@user.id) do %>
           <%= attachment_image_tag @user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
         <% end %>
         <%= @user.name %>
       </div>
-      <div>
+      <div class="user-introduction">
         <%= @user.introduction %>
       </div>
       <% if @user == current_user %>
-        <div>
-          <%= link_to "投稿内容の編集", edit_post_path(@post.id) %>
+        <div class="post-edit">
+          <%= link_to edit_post_path(@post.id) do %>
+            <i class="fas fa-edit post-edit-btn"></i>
+          <% end %>
         </div>
-        <div>
-          <%= link_to "投稿を削除", post_path(@post), method: :delete, data: {confirm: "投稿を削除します。よろしいですか？"} %>
+        <div class="post-destroy">
+          <%= link_to post_path(@post), method: :delete, data: {confirm: "投稿を削除します。よろしいですか？"} do %>
+            <i class="fas fa-trash-alt post-destroy-btn"></i>
+          <% end %>
         </div>
       <% else %>
         <div class="relationship_count">
@@ -29,8 +33,8 @@
         </div>
       <% end %>
     </div>
-    <div class="col-lg-5">
-      <div>
+    <div class="col-lg-6 post-box">
+      <div class="post-title">
         <%= @post.title %>
       </div>
       <div class="slick" style="width: 100%;">
@@ -40,21 +44,21 @@
       </div>
       <!--どの投稿も同じ部分テンプレートを使うので、グッドを押すと全ての投稿にグッドがついてしまうので、-->
       <!--部分テンプレート自体にidをつけることで、投稿ごとにグッドをすることができる。-->
-      <div class="like_btn_<%= @post.id %>">
-        <%= render "likes/like", post: @post %>
-      </div>
+        <div class="like_btn_<%= @post.id %>">
+          <%= render "likes/like", post: @post %>
+        </div>
       <!--<i class="fas fa-eye">-->
       <!--  <%#= @post.impressionist_count(:filter=>:ip_address) %>-->
       <!--</i>-->
-      <div>
+      <div class="post-body">
         <%= @post.body %>
       </div>
-      <div>
+      <div class="time">
         <i class="far fa-clock clock-icon"></i>
         <%= time_ago_in_words(@post.created_at) %>前
       </div>
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-3">
       <!--jsファイルに処理を記述するためにクラス名を記載-->
       <div class="comments_area">
         <!--commentsフォルダの_comments.html.erbを呼び、データを渡している。-->

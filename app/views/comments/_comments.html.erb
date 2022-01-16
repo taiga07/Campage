@@ -1,12 +1,16 @@
 <!--投稿に紐付いたコメントの数を表示-->
-<h2>コメント一覧:<%= post.comments.count %>件</h2>
+<h4>コメント一覧:<%= post.comments.count %>件</h4>
 <% post.comments.each do |comment| %>
-  <div>
-    <%= attachment_image_tag comment.user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
-    <%= comment.user.name %>
+  <div class="comment-user">
+    <%= link_to user_path(comment.user) do %>
+      <%= attachment_image_tag comment.user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
+      <%= comment.user.name %>
+    <% end %>
   </div>
-  <div>
+  <div class="comment-area">
     <%= comment.comment %>
+  </div>
+  <div class="comment-destroy">
     <i class="far fa-clock clock-icon"></i>
     <%= time_ago_in_words(comment.created_at) %>前
     <% if comment.user == current_user %>
