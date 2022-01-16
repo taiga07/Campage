@@ -37,9 +37,9 @@
       <div class="post-title">
         <%= @post.title %>
       </div>
-      <div class="slick" style="width: 100%;">
+      <div class="slick">
         <% @post.post_images.each do |image| %>
-          <%= attachment_image_tag image, :image, style: "width: 100%" %>
+          <%= attachment_image_tag image, :image %>
         <% end %>
       </div>
       <!--どの投稿も同じ部分テンプレートを使うので、グッドを押すと全ての投稿にグッドがついてしまうので、-->
