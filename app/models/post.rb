@@ -8,7 +8,7 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :notifications, dependent: :destroy
-  
+
   # postモデルを使ってpost_imagesテーブルにあるimage_idカラムに画像を保存すると言う解釈かな
   accepts_attachments_for :post_images, attachment: :image
 
@@ -30,10 +30,8 @@ class Post < ApplicationRecord
       if notification.visiter_id == notification.visited_id
         notification.checked = true
       end
-    else
-      notification.checked = true
+      notification.save if notification.valid?
     end
-    notification.save if notification.valid?
   end
 
   def create_notification_comment!(current_user, comment_id)

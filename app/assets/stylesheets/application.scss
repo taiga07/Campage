@@ -65,7 +65,7 @@
   padding-top: 0rem;
   color: #CC9900;
 }
-.header-image a img, .user-name a img{
+.header-image a img, .user-name a img, .comment-user a img{
   width:  50px;
   height: 50px;
   border-radius: 50%;
@@ -91,7 +91,7 @@ main {
   color: #FFFFFF;
 }
 
-.login, .signin {
+.login, .signin, .postnew, .useredit {
   margin: 70px 0;
 }
 
@@ -105,46 +105,71 @@ main {
   height: auto;
 }
 // ここまで
-// 新規投稿
-#preview img {
-  width: 25%;
-  height: auto;
-}
-// ここまで
 // slick設定
 .slick-prev:before, .slick-next:before {
   color: #000;/*黒にする*/
   opacity: .40;/*デフォルトは.75が指定されている*/
 }
-.slick{
-  width: 600px;
-}
+// .slick{
+//   width: 600px;
+// }
 .slick img{
   width: 100%;
 }
 // ここまで
-// 投稿一覧
-.post-index {
-  display: flex;
-  justify-content: center;
-  margin-top: 40px;
+// 新規投稿ページ
+.postnew-title, .postmew, .image-form, .title-form, .body-form{
+  margin-bottom: 35px;
 }
-.sideber, .post-box {
-  margin-top: 20px;
+.title-form input{
+  width: 333px;
+  height: 40px;
 }
+.body-form textarea{
+  width: 333px;
+  height: 200px;
+}
+.share-botton{
+  display       : inline-block;
+  border-radius : 20%;          /* 角丸       */
+  font-size     : 13pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 11px 24px;   /* 余白       */
+  background    : #cccccc;     /* 背景色     */
+  color         : #000000;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  border        : 2px solid #999999;    /* 枠の指定 */
+}
+.share-botton:hover {
+  color         : #000000;     /* 背景色     */
+  background    : #66ff66;     /* 文字色     */
+}
+#preview img {
+  width: 25%;
+  height: auto;
+}
+// ここまで
+// 投稿一覧ページ
 .sideber{
-  margin-right: 50px;
   position: sticky;
   top: 70px;
 }
-.post-box{
-  width: 600px;
+.sideber a img{
+  width:  70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
 }
-.post-boxes{
+.post-boxes, .postnew, .post-box{
   margin-bottom: 50px;
   border-width: 1px;
 	border-color: #CCCCCC;
 	border-style: solid;
+}
+.post-boxes{
+  margin: 0 20px 40px 20px;
 }
 .user-name{
   border-width: 1px;
@@ -152,20 +177,41 @@ main {
 	border-bottom-style: solid;
 	font-weight: bold;
 }
-
-.sideber a img{
+.user-name, .post-title, .like-btn, .like-btn2, .post-like, .post-body, .post-comment-link, .time{
+  padding: 2px 15px;
+}
+.post-body, .comment-area{
+  word-wrap : break-word;
+}
+.like-btn{
+  font-size: 1.5em;
+  color: black;
+}
+.like-btn2{
+  font-size: 1.5em;
+  color: #CC0000;
+}
+// ここまで
+// 投稿詳細ページ
+.postshow{
+  margin-top: 40px;
+}
+.postshow-user, .user-introduction, .post-edit, .post-destroy{
+  margin-bottom: 20px;
+}
+.post-edit-btn, .post-destroy-btn{
+  font-size: 1.2em;
+  color: black;
+}
+.postshow-user a img{
   width:  70px;
   height: 70px;
   border-radius: 50%;
   object-fit: cover;
 }
-.user-name, .post-title, .like-btn, .post-body, .post-comment-link, .time{
-  padding: 2px 15px;
+.comment-destroy a{
+  color: red;
 }
-.post-body{
-  width: 100%;
-}
-
 // ここまで
 // マイページ
 .user-inf{
@@ -183,7 +229,7 @@ main {
 .row-box{
   width: 1024px;
 }
-.row-box a{
+.row-box a, .comment-user a{
   font-size: 12pt;
   color: black;
 }

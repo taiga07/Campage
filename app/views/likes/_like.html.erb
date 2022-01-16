@@ -4,15 +4,14 @@
     <div>
       <!--remote: trueを追記することでjsファイルを探しに行ってもらう。-->
       <%= link_to post_likes_path(post.id), method: :delete, remote: true do %>
-        <i class="fas fa-thumbs-up"></i>
+        <i class="fas fa-thumbs-up like-btn2"></i>
       <% end %>
       グッド!! <%= post.likes.count %>件
     </div>
   <% else %>
     <div>
-      <!--remote: trueを追記することでjsファイルを探しに行ってもらう。-->
       <%= link_to post_likes_path(post.id), method: :post, remote: true do %>
-        <i class="far fa-thumbs-up"></i>
+        <i class="far fa-thumbs-up like-btn"></i>
       <% end %>
       グッド!! <%= post.likes.count %>件
     </div>
@@ -20,8 +19,13 @@
 <% else %>
   <div>
     <%= link_to new_user_session_path, data: {confirm: "グッド!!するにはログインが必要です。ページを移動しますか？"} do %>
-      <i class="far fa-thumbs-up"></i>
+      <i class="far fa-thumbs-up like-btn"></i>
     <% end %>
     グッド!! <%= post.likes.count %>件
   </div>
 <% end %>
+
+
+
+
+
