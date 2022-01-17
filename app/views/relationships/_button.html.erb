@@ -1,15 +1,15 @@
 <% if user_signed_in? %>
   <% if current_user.following?(user) %>
-    <div>
+    <div class="btn btn-primary follow-btn">
       <%= link_to "フォロー中", user_relationships_path(user.id), method: :delete, remote: true %>
     </div>
   <% else %>
-    <div>
+    <div class="btn btn-success follow-btn">
       <%= link_to "フォロー", user_relationships_path(user.id), method: :POST, remote: true %>
     </div>
   <% end %>
 <% else %>
-  <div>
+  <div class="btn btn-success follow-btn">
     <%= link_to "フォロー", new_user_session_path, data: {confirm: "フォローするにはログインが必要です。ページを移動しますか？"} %>
   </div>
 <% end %>
