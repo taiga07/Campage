@@ -103,15 +103,11 @@ main {
 }
 // ここまで
 // 検索一覧
-.search-image img {
-  width: 33%;
-  height: auto;
-}
 .follow-btn a{
   font-size: 12pt;
   color: white;
 }
-.search-box{
+.search-box, .follow-box{
   margin: 20px 0;
 }
 // ここまで

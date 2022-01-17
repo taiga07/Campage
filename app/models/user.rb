@@ -55,10 +55,7 @@ class User < ApplicationRecord
         visited_id: id,
         action: 'follow'
       )
-    else
-      notification.checked = true
-    end
       notification.save if notification.valid?
+    end
   end
-
 end

@@ -1,18 +1,18 @@
 <div class="container">
-
-    <% if @model == 'user' %>
-      <div class="d-flex flex-column align-items-center search-box">
-        <h4>【会員の検索結果】<br>検索ワード：<%= @content %></h4>
-        <%= render 'users_index', users: @records %>
-      </div>
-    <% else @model == 'post' %>
-      <h4>【投稿の検索結果】検索ワード：<%= @content %></h4>
-      <div class="row">
-        <%= render 'posts_index', posts: @records %>
-      </div>
-    <% end %>
-    <div class="row d-flex justify-content-center">
-      <%= paginate @records, theme: 'twitter-bootstrap-4' %>
+  <% if @model == 'user' %>
+    <div class="d-flex flex-column align-items-center search-box">
+      <h4>【会員の検索結果】<br>検索ワード：<%= @content %></h4>
+      <%= render 'users_index', users: @records %>
     </div>
-
+  <% else @model == 'post' %>
+    <div class="d-flex justify-content-center search-box">
+      <h4>【投稿の検索結果】<br>検索ワード：<%= @content %></h4>
+    </div>
+    <div class="row">
+      <%= render 'posts_index', posts: @records %>
+    </div>
+  <% end %>
+  <div class="row d-flex justify-content-center">
+    <%= paginate @records, theme: 'twitter-bootstrap-4' %>
+  </div>
 </div>

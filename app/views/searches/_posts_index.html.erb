@@ -1,5 +1,5 @@
 <% posts.each do |post| %>
-  <div class= "col-lg-3 d-flex flex-column postranking">
+  <div class= "col-md-3 d-flex flex-column postranking">
     <div class="ranking-user-name">
       <%= link_to user_path(post.user) do %>
         <%= attachment_image_tag post.user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
@@ -13,7 +13,7 @@
       <% end %>
     <% end %>
     </div>
-    <div>
+    <div class="like_btn_<%= post.id %>">
       <%= render "likes/like", post: post %>
     </div>
   </div>
