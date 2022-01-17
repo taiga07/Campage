@@ -19,10 +19,8 @@
   　</div>
   　<div>
   　   <i class="fas fa-thumbs-up"></i>
-  　  <%= post.likes.count %>
-  　</div>
-  　<div>
-  　  <i class="far fa-clock clock-icon"></i>
+  　   <%= post.likes.count %>
+  　   <i class="far fa-clock clock-icon"></i>
       <%= time_ago_in_words(post.created_at) %>前
   　</div>
   </div>

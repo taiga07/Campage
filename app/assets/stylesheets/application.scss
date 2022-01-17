@@ -92,10 +92,12 @@ main {
   color: #FFFFFF;
 }
 
-.login, .signin, .postnew, .useredit {
+.login, .signup, .postnew, .useredit {
   margin: 70px 0;
 }
-
+.signuptitle, .signupbtn, .contactbtn, .contact-sendbtn, .contact-backbtn{
+  text-align: center;
+}
 .about-slick {
   width: 250px;
 }
@@ -245,7 +247,6 @@ main {
   border-radius: 50%;
   object-fit: cover;
 }
-
 // ここまで
 // 会員編集ページ
 th img{
@@ -266,6 +267,20 @@ th img{
   border-width: 1px;
 	border-color: #CCCCCC;
 	border-style: solid;
+}
+// ここまで
+// お問い合わせ画面
+.contact-title{
+  text-align: center;
+}
+.confirm-box{
+  margin: 20px 0;
+  border-width: 3px;
+	border-color: #CCCCCC;
+	border-style: solid;
+}
+dt{
+  margin-bottom: 3px;
 }
 // ここまで
 

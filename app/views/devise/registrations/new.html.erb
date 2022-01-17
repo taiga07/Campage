@@ -1,11 +1,11 @@
 <div class="container">
-  <div class="row d-flex align-items-center justify-content-center signin">
+  <div class="row d-flex align-items-center justify-content-center signup">
     <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
       <table class="table">
         <tr>
-          <th colspan="2">
+          <th colspan="2" class="signuptitle">
             <h3>新規登録</h3>
           </th>
         </tr>
@@ -45,9 +45,10 @@
           </div>
         </tr>
         <tr>
-          <th></th>
           <div class="actions">
-            <td><%= f.submit "登録" %></td>
+            <th colspan="2" class="signupbtn">
+              <%= f.submit "登録" %>
+            </th>
           </div>
         </tr>
       </table>

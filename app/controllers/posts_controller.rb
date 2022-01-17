@@ -78,11 +78,12 @@ class PostsController < ApplicationController
   end
 
   def pv_ranking
-    @posts_pv_ranking = Post.order(impressions_count: 'DESC')
+    @posts_pv_ranking = Post.order(impressions_count: 'DESC').page(params[:page]).per(8)
   end
 
   def good_ranking
     @posts_good_ranking = Post.find(Like.group(:post_id).order('count(post_id) desc').pluck(:post_id))
+    @posts_good_ranking = Kaminari.paginate_array(@posts_good_ranking).page(params[:page]).per(8)
   end
 
   private

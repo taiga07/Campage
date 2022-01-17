@@ -1,43 +1,41 @@
 <!--newページで入力されたデータを表示している。-->
+<div class="container">
+  <div class="confirm-box">
+    <div class="contact-title">
+      <h3>入力内容確認</h3>
+    </div>
+    <dl>
+    	<dt>お名前</dt>
+    	<dd>&emsp;<%= @contact.name %></dd>
+    	<dt>メールアドレス</dt>
+    	<dd>&emsp;<%= @contact.email %></dd>
+    	<dt>電話番号</dt>
+    	<dd>&emsp;<%= @contact.phone_number %></dd>
+    	<dt>お問い合わせ内容</dt>
+    	<dd><%= @contact.body %></dd>
+    </dl>
+  </div>
 
-<table>
-  <tr>
-    <th></th>
-    <th>
-      <h2>入力内容確認</h2>
-    </th>
-  </tr>
-    <td>お名前</td>
-    <td><%= @contact.name %></td>
-  </tr>
-  <tr>
-    <td>メールアドレス</td>
-    <td><%= @contact.email %></td>
-  </tr>
-  <tr>
-    <td>電話番号</td>
-    <td><%= @contact.phone_number %></td>
-  </tr>
-  <tr>
-    <td>お問い合わせ内容</td>
-    <td><%= @contact.body %></td>
-  </tr>
-</table>
 
-<!--コントローラーに情報を送り、createアクションが実行される。-->
-<%=form_with model: @contact, local: true do |f| %>
-  <%= f.hidden_field :name %>
-  <%= f.hidden_field :email %>
-  <%= f.hidden_field :phone_number %>
-  <%= f.hidden_field :body %>
-  <%= f.submit "送信" %>
-<% end %>
 
-<!--backアクションを起こし、new画面にデータを送っている-->
-<%=form_with model: @contact, url: back_contacts_path, local: true do |f| %>
-  <%= f.hidden_field :name %>
-  <%= f.hidden_field :email %>
-  <%= f.hidden_field :phone_number %>
-  <%= f.hidden_field :body %>
-  <%= f.submit "入力画面に戻る" %>
-<% end %>
+  <div class="contact-sendbtn">
+    <!--コントローラーに情報を送り、createアクションが実行される。-->
+    <%=form_with model: @contact, local: true do |f| %>
+      <%= f.hidden_field :name %>
+      <%= f.hidden_field :email %>
+      <%= f.hidden_field :phone_number %>
+      <%= f.hidden_field :body %>
+      <%= f.submit "送信" %>
+    <% end %>
+  </div>
+  <div class="contact-backbtn">
+    <!--backアクションを起こし、new画面にデータを送っている-->
+    <%=form_with model: @contact, url: back_contacts_path, local: true do |f| %>
+      <%= f.hidden_field :name %>
+      <%= f.hidden_field :email %>
+      <%= f.hidden_field :phone_number %>
+      <%= f.hidden_field :body %>
+      <%= f.submit "入力画面に戻る" %>
+    <% end %>
+  </div>
+</div>

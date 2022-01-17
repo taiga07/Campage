@@ -1,4 +1,9 @@
-<h2>グッド!!が多い投稿</h2>
-<div>
-  <%= render "good_ranking", posts_good_ranking: @posts_good_ranking %>
+<div class="container">
+  <h4>グッド!!が多い投稿</h4>
+  <div class="row">
+    <%= render "good_ranking", posts_good_ranking: @posts_good_ranking %>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <%= paginate @posts_good_ranking, theme: 'twitter-bootstrap-4' %>
+  </div>
 </div>
