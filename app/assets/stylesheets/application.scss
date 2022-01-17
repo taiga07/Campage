@@ -92,7 +92,7 @@ main {
   color: #FFFFFF;
 }
 
-.login, .signup, .postnew, .useredit {
+.login, .signup {
   margin: 70px 0;
 }
 .signuptitle, .signupbtn, .contactbtn, .contact-sendbtn, .contact-backbtn{
@@ -107,7 +107,7 @@ main {
   font-size: 12pt;
   color: white;
 }
-.search-box, .follow-box{
+.search-box, .follow-box, .notification-box, .postnew, .useredit{
   margin: 20px 0;
 }
 // ここまで
@@ -116,9 +116,6 @@ main {
   color: #000;/*黒にする*/
   opacity: .40;/*デフォルトは.75が指定されている*/
 }
-// .slick{
-//   width: 600px;
-// }
 .slick img, .ranking-post img{
   width: 100%;
   // box-sizing: border-box;
@@ -286,7 +283,14 @@ dt{
   margin-bottom: 3px;
 }
 // ここまで
-
+// 通知一覧
+.notification-user-name a img{
+  width:  40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+// ここまで
 
 
 

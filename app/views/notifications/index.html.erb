@@ -1,11 +1,23 @@
-<h3>通知一覧</h3>
-<!--通知を送ってくれたユーザーが自分の場合は通知に載せないのでここで排除-->
-<% @notifications = @notifications.where.not(visiter_id: current_user.id) %>
-
-<% if @notifications.exists? %>
-  <div>
-    <%= render @notifications %>
+<div class="container">
+  <div class="row d-flex flex-column align-items-center notification-box">
+    <h4>通知一覧</h4>
+    <!--通知を送ってくれたユーザーが自分の場合は通知に載せないのでここで排除-->
+    <% @notifications = @notifications.where.not(visiter_id: current_user.id) %>
+    <% if @notifications.exists? %>
+      <div>
+        <%= render @notifications %>
+      </div>
+    <% else %>
+      <p>通知はありません。</p>
+    <% end %>
   </div>
-<% else %>
-  <p>通知はありません。</p>
-<% end %>
+  <div class="row d-flex justify-content-center">
+      <%= paginate @notifications, theme: 'twitter-bootstrap-4' %>
+    </div>
+</div>
+
+
+
+
+
+
