@@ -20,9 +20,11 @@
   <body class="<%= controller.controller_name %>">
     <header class="header">
       <nav class="navbar navbar-expand-lg">
-        <%= link_to root_path, class: "site-name" do %>
+        <div class="site-name">
+        <%= link_to root_path do %>
           <h1>Campage</h1>
         <% end %>
+        </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -32,12 +34,12 @@
             <!--topとaboutの場合-->
             <% if current_page?(root_path) || current_page?(about_path) %>
               <ul class="navbar-nav d-flex align-items-center">
-                <li class="nav-item"><%=link_to "ABOUT", about_path, class: "nav-link" %></li>
-                <li class="nav-item"><%= link_to "POSTSLIST", posts_path, class: "nav-link" %></li>
-                <li class="nav-item"><%= link_to "RANKING", posts_ranking_path, class: "nav-link" %></li>
-                <li class="nav-item"><%= link_to "CONTACT", new_contacts_path, class: "nav-link" %></li>
+                <li class="nav-item"><%=link_to "ABOUT", about_path %></li>
+                <li class="nav-item"><%= link_to "POSTSLIST", posts_path %></li>
+                <li class="nav-item"><%= link_to "RANKING", posts_ranking_path %></li>
+                <li class="nav-item"><%= link_to "CONTACT", new_contacts_path %></li>
                 <li class="nav-item">
-                  <%= link_to new_post_path, class: "nav-link" do %>
+                  <%= link_to new_post_path do %>
                     <span class="fa-stack">
                       <i class="fas fa-campground n-camp fa-stack"></i>
                       <i class="fas fa-plus n-plus fa-stack-1x"></i>
@@ -45,7 +47,7 @@
                   <% end %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to notifications_path, class: "nav-link" do %>
+                  <%= link_to notifications_path do %>
                     <% if unchecked_notifications.any? %>  <!--未確認の通知があるかどうか確認-->
                       <span class="fa-stack">
                         <i class="far fa-thumbs-up n-good fa-stack"></i>
@@ -57,18 +59,18 @@
                   <% end %>
                 </li>
                 <li class="nav-item header-image">
-                  <%= link_to user_path(current_user), class: "nav-link" do %>
+                  <%= link_to user_path(current_user) do %>
                     <%= attachment_image_tag current_user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
                   <% end %>
                 </li>
               </ul>
             <% else %>
               <ul class="navbar-nav d-flex align-items-center">
-                <li class="nav-item"><%= link_to "POSTSLIST", posts_path, class: "nav-link" %></li>
-                <li class="nav-item"><%= link_to "RANKING", posts_ranking_path, class: "nav-link" %></li>
-                <li class="nav-item"><%= link_to "CONTACT", new_contacts_path, class: "nav-link" %></li>
+                <li class="nav-item"><%= link_to "POSTSLIST", posts_path %></li>
+                <li class="nav-item"><%= link_to "RANKING", posts_ranking_path %></li>
+                <li class="nav-item"><%= link_to "CONTACT", new_contacts_path %></li>
                 <li class="nav-item">
-                  <%= link_to new_post_path, class: "nav-link" do %>
+                  <%= link_to new_post_path do %>
                     <span class="fa-stack">
                       <i class="fas fa-campground n-camp fa-stack"></i>
                       <i class="fas fa-plus n-plus fa-stack-1x"></i>
@@ -76,7 +78,7 @@
                   <% end %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to notifications_path, class: "nav-link" do %>
+                  <%= link_to notifications_path do %>
                     <% if unchecked_notifications.any? %>  <!--未確認の通知があるかどうか確認-->
                       <span class="fa-stack">
                         <i class="far fa-thumbs-up n-good fa-stack"></i>
@@ -88,7 +90,7 @@
                   <% end %>
                 </li>
                 <li class="nav-item header-image">
-                  <%= link_to user_path(current_user), class: "nav-link" do %>
+                  <%= link_to user_path(current_user) do %>
                     <%= attachment_image_tag current_user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
                   <% end %>
                 </li>
@@ -97,19 +99,19 @@
             <!--ログインしていなくて、トップページ、新規登録ページ、ログインページの場合の処理-->
           <% elsif current_page?(root_path) || current_page?(new_user_session_path) || current_page?(new_user_registration_path) %>
             <ul class="navbar-nav d-flex align-items-center">
-              <li class="nav-item"><%=link_to "ABOUT", about_path, class: "nav-link" %></li>
-              <li class="nav-item"><%= link_to "POSTSLIST", posts_path, class: "nav-link" %></li>
-              <li class="nav-item"><%= link_to "RANKING", posts_ranking_path, class: "nav-link" %></li>
-              <li class="nav-item"><%= link_to "CONTACT", new_contacts_path, class: "nav-link" %></li>
+              <li class="nav-item"><%=link_to "ABOUT", about_path %></li>
+              <li class="nav-item"><%= link_to "POSTSLIST", posts_path %></li>
+              <li class="nav-item"><%= link_to "RANKING", posts_ranking_path %></li>
+              <li class="nav-item"><%= link_to "CONTACT", new_contacts_path %></li>
             </ul>
           <% else %>
             <ul class="navbar-nav d-flex align-items-center">
-              <li class="nav-item"><%=link_to "ABOUT", about_path, class: "nav-link" %></li>
-              <li class="nav-item"><%= link_to "POSTSLIST", posts_path, class: "nav-link" %></li>
-              <li class="nav-item"><%= link_to "RANKING", posts_ranking_path, class: "nav-link" %></li>
-              <li class="nav-item"><%= link_to "CONTACT", new_contacts_path, class: "nav-link" %></li>
-              <li class="nav-item"><%= link_to "SIGNUP", new_user_registration_path, class: "nav-link" %></li>
-              <li class="nav-item"><%= link_to "LOGIN", new_user_session_path, class: "nav-link" %></li>
+              <li class="nav-item"><%=link_to "ABOUT", about_path %></li>
+              <li class="nav-item"><%= link_to "POSTSLIST", posts_path %></li>
+              <li class="nav-item"><%= link_to "RANKING", posts_ranking_path %></li>
+              <li class="nav-item"><%= link_to "CONTACT", new_contacts_path %></li>
+              <li class="nav-item"><%= link_to "SIGNUP", new_user_registration_path %></li>
+              <li class="nav-item"><%= link_to "LOGIN", new_user_session_path %></li>
             </ul>
           <%end%>
         </div>
@@ -125,11 +127,10 @@
     </header>
     <main>
       <!--フラッシュメッセージの部分をdivタグで囲む-->
-
     <%= yield %>
     </main>
-    <footer class="row d-flex align-items-end justify-content-center">
-      <p>atode</p>
-    </footer>
+    <% if current_page?(posts_path) %>
+      <div id="page_top"><a href="#"></a></div>
+    <% end %>
   </body>
 </html>
