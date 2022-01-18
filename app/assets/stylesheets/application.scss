@@ -217,29 +217,16 @@ main {
 // ここまで
 // マイページ
 .user-inf{
-  display: flex;
-  padding: 10px 30px;
+  margin: 20px 0;
 }
-.mypage img {
-  width: 33%;
-  height: auto;
-  margin-bottom: 4px;
-}
-.row-box{
-  margin-left: 60px;
-}
-.row-box{
-  width: 1024px;
-}
-.row-box a, .comment-user a, .ranking-user-name a, .ranking-list a{
+.user-inf a{
   font-size: 12pt;
   color: black;
 }
-.rowlist{
-  margin: 0 40px 20px 0;
-}
-.relationship_count{
-  display: flex;
+.mypage img {
+  width: 32%;
+  height: auto;
+  margin-bottom: 4px;
 }
 .profile-image img{
   width:  100%;
