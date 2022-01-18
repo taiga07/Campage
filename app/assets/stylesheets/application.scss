@@ -225,7 +225,7 @@ main {
   height: auto;
   margin-bottom: 4px;
 }
-.row-box, .profile-image{
+.row-box{
   margin-left: 60px;
 }
 .row-box{
@@ -242,8 +242,8 @@ main {
   display: flex;
 }
 .profile-image img{
-  width:  160px;
-  height: 160px;
+  width:  100%;
+  height: 100%;
   border-radius: 50%;
   object-fit: cover;
 }

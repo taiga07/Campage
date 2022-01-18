@@ -1,19 +1,8 @@
-<% if current_page?(user_path(current_user)) %>
-  <div class="rowlist">
-    <%= link_to "フォロー中", follows_user_path(user.id) %>
-    <%= following_users.count %>
-  </div>
-  <div class="rowlist">
-    <%= link_to "フォロワー", followers_user_path(user.id) %>
-    <%= follower_users.count %>
-  </div>
-<% else %>
-  <div>
-    <%= link_to "フォロー中", follows_user_path(user.id) %>
-    <%= following_users.count %>
-  </div>
-  <div>
-    <%= link_to "フォロワー", followers_user_path(user.id) %>
-    <%= follower_users.count %>
-  </div>
-<% end %>
+<div class="col-lg-4">
+  <%= link_to "フォロー中", follows_user_path(user.id) %>
+  <%= following_users.count %>
+</div>
+<div class="col-lg-4">
+  <%= link_to "フォロワー", followers_user_path(user.id) %>
+  <%= follower_users.count %>
+</div>
