@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
-    <h2>
+    <h4>
       <% @entries.each do |e| %>
         <%= attachment_image_tag e.user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
         <%= e.user.name %>さん
       <% end %>
-    </h2>
+    </h4>
     <div class="messages_area">
       <%= render "messages/messages", messages: @messages %>
     </div>
