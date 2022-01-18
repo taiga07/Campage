@@ -38,16 +38,16 @@
 .search {
   position: absolute;
 }
-.site-name {
+.site-name a {
   font-family: 'The Nautigal', sans-serif;
   margin: 0 10px;
   color: #FF9900;
 }
 
-.nav-link {
+.nav-item a{
   color: #FF9900;
+  margin: 0 5px;
 }
-
 .navbar-toggler .navbar-toggler-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,153,0,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
@@ -86,7 +86,7 @@ main {
 // ここまで
 // トップ、アバウト、devise
 .text-box {
-  margin: 70px;
+  margin: 70px 0;
 }
 .top-text {
   color: #FFFFFF;
@@ -285,6 +285,41 @@ dt{
 .table td {
   border:none;
 }
+
+// トップへボタン
+#page_top{
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  // background: #ef3f98;
+  // opacity: 0.6;
+  border-radius: 50%;
+}
+#page_top a{
+  position: relative;
+  display: block;
+  width: 50px;
+  height: 50px;
+  text-decoration: none;
+}
+#page_top a::before{
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  content: '\f106';
+  font-size: 25px;
+  color: #808080;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: -5px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  text-align: center;
+}
+// ここまで
+
 
 @media screen and (max-width: 420px){
 .br-sp {display: none; }
