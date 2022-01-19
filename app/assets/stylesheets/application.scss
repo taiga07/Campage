@@ -34,10 +34,6 @@
 .header {
   position: relative;
 }
-
-.search {
-  position: absolute;
-}
 .site-name a {
   font-family: 'The Nautigal', sans-serif;
   margin: 0 10px;
@@ -219,7 +215,7 @@ main {
 .user-inf{
   margin: 20px 0;
 }
-.user-inf a{
+.user-inf a, .ranking-user-name a{
   font-size: 12pt;
   color: black;
 }
@@ -244,7 +240,7 @@ th img{
 }
 // ここまで
 // ランキング
-.ranking-user-name a img{
+.ranking-user-name a img, .notification-user-name a img{
   width:  40px;
   height: 40px;
   border-radius: 50%;
@@ -270,14 +266,7 @@ dt{
   margin-bottom: 3px;
 }
 // ここまで
-// 通知一覧
-.notification-user-name a img{
-  width:  40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-// ここまで
+
 
 
 
