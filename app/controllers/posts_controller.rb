@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
 
-  # impressionist :actions => [:show]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_campage, only: [:edit, :update, :destroy]
+  before_action :prevent_url, only: [:edit, :update, :destroy]
 
   def new
     @post = Post.new
@@ -93,4 +95,13 @@ class PostsController < ApplicationController
     # 複数の画像IDになる為、配列[]で渡している。
   end
 
+  def set_campage
+    @post = Post.find(params[:id])
+  end
+
+  def prevent_url
+    if @post.user_id != current_user.id
+      redirect_to root_path
+    end
+  end
 end

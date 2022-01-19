@@ -210,12 +210,19 @@ main {
 .comment-destroy a{
   color: red;
 }
+.message-btn{
+  margin-bottom: 10px;
+}
+.message-btn a{
+  color: white;
+}
+
 // ここまで
 // マイページ
 .user-inf{
   margin: 20px 0;
 }
-.user-inf a, .ranking-user-name a{
+.ranking-user-name a, .relationship_count a, .comment-user a{
   font-size: 12pt;
   color: black;
 }

@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
 
+  before_action :authenticate_user!, only: [:edit, :update]
+  before_action :set_campage, only: [:edit, :update]
+  before_action :prevent_url, only: [:edit, :update]
+
   def show
     @user = User.find(params[:id])  #ユーザーの情報を取得
     @posts = @user.posts.order(created_at: :desc)  #そのユーザーに紐づいた投稿を新しい順に@postsに格納
@@ -55,6 +59,16 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :introduction, :email, :phone_number, :profile_image)
+  end
+
+  def set_campage
+    @user = User.find(params[:id])
+  end
+
+  def prevent_url
+    if @user.id != current_user.id
+      redirect_to root_path
+    end
   end
 
 end
