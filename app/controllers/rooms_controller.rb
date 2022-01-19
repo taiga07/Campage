@@ -1,5 +1,7 @@
 class RoomsController < ApplicationController
 
+  before_action :authenticate_user!
+
   def create
     @room = Room.create  #ルームを作成
     #Entriesテーブルのuser_idカラムには自身のidを入れ、room_idカラムには今作ったルームのidを保存し@entry1に格納。

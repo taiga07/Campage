@@ -1,5 +1,7 @@
 class MessagesController < ApplicationController
 
+  before_action :authenticate_user!
+
   #メッセージの送信ボタンが押され、createアクションを起こす前に、set_roomメソッドを適用させる。
   before_action :set_room, only: [:create]
 

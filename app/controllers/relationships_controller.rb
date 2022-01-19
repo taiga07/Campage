@@ -1,5 +1,7 @@
 class RelationshipsController < ApplicationController
 
+  before_action :authenticate_user!
+
   def create
     current_user.follow(params[:user_id])
     flash.now[:notice] = 'フォローしました'
