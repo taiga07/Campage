@@ -9,11 +9,11 @@
       <%= follower_users.count %>
     </div>
   <% else %>
-    <div class="col-lg-5 col-md-5">
+    <div class="col-lg-6 col-md-6">
       <%= link_to "フォロー中", follows_user_path(user.id) %>
       <%= following_users.count %>
     </div>
-    <div class="col-lg-5 col-md-5">
+    <div class="col-lg-6 col-md-6">
       <%= link_to "フォロワー", followers_user_path(user.id) %>
       <%= follower_users.count %>
     </div>
