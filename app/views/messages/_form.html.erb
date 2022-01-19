@@ -1,4 +1,7 @@
 <%= form_with model: @message do |f| %>
+  <div class="message_error">
+    <%= render 'layouts/error_messages', model: f.object %>
+  </div>
   <%= f.text_field :message, placeholder: "メッセージを入力" %>
   <%= f.hidden_field :room_id, value: @room.id %><!--メッセージがどのルームのものか判断するために、メッセージと一緒にroomのidも送る-->
   <%= f.submit "送信" %>

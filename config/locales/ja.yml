@@ -6,8 +6,17 @@ ja:
       user:
         name: 表示名
         email: メールアドレス
-        phone_number: 電話番号（ハイフンなし）
+        phone_number: 電話番号
         password: パスワード
+      contact:
+        name: 氏名
+        email: メールアドレス
+        phone_number: 電話番号
+        body: お問い合わせ内容
+      post:
+        title: キャンプ場or施設名
+      message:
+        message: メッセージ
       errors:
         messages:
           record_invalid: 'バリデーションに失敗しました: %{errors}'

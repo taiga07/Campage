@@ -9,7 +9,7 @@ class ContactsController < ApplicationController
   def confirm
     @contact = Contact.new(contact_params)  # newアクションから入力内容を受け取る。
     if @contact.invalid?  #バリデーションエラーが発生した場合trueを返す。
-      render :new
+      render :error
     end
   end
 
@@ -26,7 +26,6 @@ class ContactsController < ApplicationController
       ContactMailer.send_mail(@contact).deliver_now
       flash.now[:notice] = "お問い合わせ内容を送信しました。"
       redirect_to root_path
-
     else
       render :new
     end

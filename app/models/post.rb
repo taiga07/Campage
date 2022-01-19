@@ -9,7 +9,9 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :notifications, dependent: :destroy
 
-  # postモデルを使ってpost_imagesテーブルにあるimage_idカラムに画像を保存すると言う解釈かな
+  validates :title, presence: true
+
+  # postモデルを使ってpost_imagesテーブルにあるimage_idカラムに画像を保存する
   accepts_attachments_for :post_images, attachment: :image
 
   def liked_by?(user)
