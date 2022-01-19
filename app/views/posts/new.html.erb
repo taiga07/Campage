@@ -1,9 +1,12 @@
 <div class="container">
   <div class="row d-flex justify-content-center">
-    <%= form_with model: @post, local: true do |f| %>
+    <%= form_with model: @post do |f| %>
       <div class="col d-inline-flex flex-column align-items-center postnew">
         <div class="postnew-title">
           <h3>新規登録</h3>
+        </div>
+        <div class="post_error">
+          <%= render 'layouts/error_messages', model: f.object %>
         </div>
         <div id="preview"></div>
         <div class="image-form">
@@ -11,7 +14,7 @@
           <!--multiple: trueが画像複数投稿する際に必要になる。-->
         </div>
         <div class="title-form">
-          <%= f.text_field :title, placeholder: "キャンプ場or施設名" %>
+          <%= f.text_field :title, autofocus: true, placeholder: "キャンプ場or施設名（必須）" %>
         </div>
         <div class="body-form">
           <%= f.text_area :body, placeholder: "道具の紹介や施設の紹介など" %>
