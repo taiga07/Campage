@@ -9,7 +9,7 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :notifications, dependent: :destroy
 
-  validates :title, presence: true
+  validates :title, {presence: true, length: {maximum: 15}}
 
   # postモデルを使ってpost_imagesテーブルにあるimage_idカラムに画像を保存する
   accepts_attachments_for :post_images, attachment: :image
