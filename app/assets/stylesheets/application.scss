@@ -172,7 +172,7 @@ main {
 .post-boxes{
   margin: 0 20px 40px 20px;
 }
-.user-name, .ranking-user-name{
+.user-name, .ranking-user-name, .follow-user-name{
   border-width: 1px;
 	border-color: #CCCCCC;
 	border-bottom-style: solid;
@@ -197,7 +197,7 @@ main {
 .postshow-user, .user-introduction, .post-edit, .post-destroy{
   margin-bottom: 20px;
 }
-.post-edit-btn, .post-destroy-btn{
+.post-edit-btn, .post-destroy-btn, .user-edit-btn a{
   font-size: 1.2em;
   color: black;
 }
@@ -222,7 +222,7 @@ main {
 .user-inf{
   margin: 20px 0;
 }
-.ranking-user-name a, .relationship_count a, .comment-user a{
+.ranking-user-name a, .relationship_count a, .comment-user a, .logout-btn a, .follow-user-name a{
   font-size: 12pt;
   color: black;
 }
@@ -247,7 +247,7 @@ th img{
 }
 // ここまで
 // ランキング
-.ranking-user-name a img, .notification-user-name a img{
+.ranking-user-name a img, .notification-user-name a img, .follow-user-name a img{
   width:  40px;
   height: 40px;
   border-radius: 50%;
@@ -316,6 +316,12 @@ dt{
 }
 // ここまで
 
+.dm-box{
+  padding: 0 10%;
+  border-width: 2px;
+	border-color: #CCCCCC;
+	border-style: solid;
+}
 
 @media screen and (max-width: 420px){
 .br-sp {display: none; }

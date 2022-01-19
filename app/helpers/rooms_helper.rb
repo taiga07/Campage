@@ -6,7 +6,7 @@ module RoomsHelper
     if message.present?
       tag.p(message.message)
     else
-      tag.p"[まだメッセージはありません]"
+      tag.p("まだメッセージはありません")
     end
   end
 
