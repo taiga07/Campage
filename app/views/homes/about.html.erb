@@ -1,14 +1,15 @@
 <div class="container">
   <div class="row d-flex justify-content-center text-center text-box">
-    <h4 class="top-text">
-      Campageでは、キャンプ好きや興味のある方の交流の場を目指しています。<br>
-      キャンプレイアウトやグランピング体験をシェアすることで、<br>
-      これから始めたい方の参考となり後押しをします。<br>
-      グランピング施設を探している人やキャンプを始めたい人が簡単に情報収集できる。<br>
-      それが Campage
+    <h4 class="about-text">
+      Campageでは、キャンプ好きや興味のある方の交流の場を目指しています。<br class="br-sp">
+      キャンプレイアウトやグランピング体験をシェアすることで、<br class="br-sp">
+      これから始めたい方の参考となり後押しをします。<br class="br-sp">
+      グランピング施設を探している人やキャンプを始めたい人が簡単に情報収集できる。<br class="br-sp">
+      それが Campage です。
     </h4>
   </div>
   <div class="row d-flex justify-content-center">
+    <!--<div class="about-img">-->
     <% @random.each do |post| %>
       <div class="about-slick m-1">
         <% post.post_images.each do |image| %>
@@ -16,7 +17,8 @@
             <%= attachment_image_tag image, :image, style: "width: 100%" %>
           <% end %>
         <% end %>
-      </div>
+        </div>
+      <!--</div>-->
     <% end %>
   </div>
 </div>

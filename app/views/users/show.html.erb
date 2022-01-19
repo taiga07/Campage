@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row user-inf">
-    <div class="col-lg-3 col-md-5 profile-image">
+    <div class="col-lg-3 col-md-5 col-sm-5 profile-image">
       <%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg" %>
     </div>
-    <div class="col-lg-9 col-md-7">
+    <div class="col-lg-9 col-md-7 col-sm-7">
       <% if current_user != @user %>
         <div class="row">
-          <div class="col-lg-6 col-md-6">
+          <div class="col-lg-6 col-md-6 col-sm-12">
             <h3><%= @user.name %></h3>
           </div>
         </div>
@@ -14,36 +14,36 @@
           <%= render "relationships/count",user: @user, following_users: @following_users, follower_users: @follower_users %>
         </div>
         <div class="row">
-          <div class="col-lg-5 col-md-5 relationship">
+          <div class="col-lg-5 col-md-5 col-sm-12 relationship">
             <%= render "relationships/button", user: @user %>
           </div>
-          <div class="col-lg-5 col-md-5 message-btn">
+          <div class="col-lg-5 col-md-5 col-sm-12 message-btn">
             <%= render "message_button", user: @user, isroom: @isroom, room: @room, entry: @entry, roomid: @roomid %>
           </div>
         </div>
       <% else %>
         <div class="row">
-          <div class="col-lg-4 col-md-6">
+          <div class="col-lg-4 col-md-6 col-sm-12">
             <h3><%= @user.name %></h3>
           </div>
-          <div class="col-lg-4 col-md-3 user-edit-btn">
+          <div class="col-lg-4 col-md-3 col-sm-12 user-edit-btn">
             <%= link_to edit_user_path(current_user.id) do %>
               <i class="fas fa-user-edit"></i>
             <% end %>
           </div>
-          <div class="col-lg-4 col-md-3 logout-btn">
+          <div class="col-lg-4 col-md-3 col-sm-12 logout-btn">
             <%= link_to "Logout", destroy_user_session_path, method: :delete %>
           </div>
         </div>
         <div class="row relationship_count">
             <%= render "relationships/count", user: @user, following_users: @following_users, follower_users: @follower_users %>
-          <div class="col-lg-4 col-md-4">
+          <div class="col-lg-4 col-md-4 col-sm-12">
             <%= link_to "DMリスト",rooms_path %>
           </div>
         </div>
       <% end %>
       <div class="row">
-        <div class="col-lg-6 col-md-6">
+        <div class="col-lg-6 col-md-6 col-sm-12">
           <div class="user-introduction">
             <%= @user.introduction %>
           </div>
