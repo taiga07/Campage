@@ -28,6 +28,8 @@
       <p>
         <%= Comment.find_by(id: notification.comment_id)&.commnet %>
       </p>
+    <% when 'dm' then%>
+      <%= "あなたにDMを送りました" %>
   <% end %>
   <div>
     <i class="far fa-clock clock-icon"></i>
