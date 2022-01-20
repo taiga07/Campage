@@ -1,8 +1,30 @@
 <% if messages.present? %>  <!--@messagesにメッセージが入っているか確認-->
-  <% messages.each do |m| %>  <!--入っていれば取り出しひとつずつmに格納-->
-    <%= attachment_image_tag m.user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
-    <%= m.message %><br>
-    <%= m.created_at.strftime("%Y-%m-%d %H:%M")%>
+  <% messages.each do |m| %>
+    <table class="table dm-table">
+      <% if m.user.id == current_user.id %>
+        <tr>
+          <td align="right">
+            <%= m.message %><br>
+            <i class="far fa-clock clock-icon"></i>
+            <%= time_ago_in_words(m.created_at) %>前
+          </td>
+          <th class="dm-user">
+            <%= attachment_image_tag m.user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
+          </th>
+        </tr>
+      <% else %>
+        <tr>
+          <th class="dm-user">
+            <%= attachment_image_tag m.user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
+          </th>
+          <td>
+            <%= m.message %><br>
+            <i class="far fa-clock clock-icon"></i>
+            <%= time_ago_in_words(m.created_at) %>前
+          </td>
+        </tr>
+      <% end %>
+    </table>
   <% end %>
 <% else %>
   メッセージを送ってみよう！

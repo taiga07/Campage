@@ -62,7 +62,7 @@
   padding-top: 0rem;
   color: #CC9900;
 }
-.header-image a img, .user-name a img, .comment-user a img{
+.header-image a img, .user-name a img, .comment-user a img, .dm-user img, .dm-title img{
   width:  50px;
   height: 50px;
   border-radius: 50%;
@@ -165,7 +165,7 @@ main {
   position: sticky;
   top: 70px;
 }
-.sideber a img{
+.sideber a img, .postshow-user a img{
   width:  70px;
   height: 70px;
   border-radius: 50%;
@@ -208,12 +208,6 @@ main {
 .post-edit-btn, .post-destroy-btn, .user-edit-btn a{
   font-size: 1.2em;
   color: black;
-}
-.postshow-user a img{
-  width:  70px;
-  height: 70px;
-  border-radius: 50%;
-  object-fit: cover;
 }
 .comment-destroy a{
   color: red;
@@ -330,6 +324,22 @@ dt{
 	border-color: #CCCCCC;
 	border-style: solid;
 }
+.messages_area{
+  border-width: 4px;
+	border-color: #CCCCCC;
+	border-style: solid;
+}
+.dm-title{
+  font-weight: bold;
+}
+.dm-table{
+  table-layout: fixed;
+  width: 100%;
+}
+.dm-user{
+  width: 74px;
+}
+
 @media screen and (max-width: 768px){
   .about-text{
     font-size: 18px;
