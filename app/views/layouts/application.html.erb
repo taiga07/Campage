@@ -129,7 +129,7 @@
       <!--フラッシュメッセージの部分をdivタグで囲む-->
     <%= yield %>
     </main>
-    <% if current_page?(posts_path) %>
+    <% if current_page?(posts_path) ||  %>
       <div id="page_top"><a href="#"></a></div>
     <% end %>
   </body>
