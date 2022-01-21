@@ -25,7 +25,7 @@
         <div class="row relationship_count">
           <%= render "relationships/count", user: @user, following_users: @following_users, follower_users: @follower_users %>
         </div>
-        <div class="row relationship">
+        <div class="row relationship_<%= @user.id %>">
           <%= render "relationships/button", user: @user %>
         </div>
         <div class="row message-btn">
@@ -44,12 +44,13 @@
       </div>
       <!--どの投稿も同じ部分テンプレートを使うので、グッドを押すと全ての投稿にグッドがついてしまうので、-->
       <!--部分テンプレート自体にidをつけることで、投稿ごとにグッドをすることができる。-->
-        <div class="like_btn_<%= @post.id %>">
-          <%= render "likes/like", post: @post %>
-        </div>
-      <!--<i class="fas fa-eye">-->
-      <!--  <%#= @post.impressionist_count(:filter=>:ip_address) %>-->
-      <!--</i>-->
+      <div class="like_btn_<%= @post.id %>">
+        <%= render "likes/like", post: @post %>
+      </div>
+      <div class="pv-count">
+        <i class="fas fa-eye pv-icon"></i>
+        <%= @post.impressionist_count(:filter=>:ip_address) %>
+      </div>
       <div class="post-body">
         <%= @post.body %>
       </div>

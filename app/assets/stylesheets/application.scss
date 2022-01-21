@@ -99,7 +99,7 @@ main {
 }
 // ここまで
 // 検索一覧
-.follow-btn a{
+.follow-btn a, .notfollow-btn a{
   font-size: 12pt;
   color: white;
 }
@@ -186,7 +186,7 @@ main {
 	border-bottom-style: solid;
 	font-weight: bold;
 }
-.user-name, .post-title, .like-btn, .like-btn2, .post-like, .post-body, .post-comment-link, .time{
+.user-name, .post-title, .like-btn, .like-btn2, .post-like, .post-body, .post-comment-link, .time, .pv-icon{
   padding: 2px 15px;
 }
 .like-btn{
@@ -196,6 +196,10 @@ main {
 .like-btn2{
   font-size: 1.5em;
   color: #CC0000;
+}
+.pv-icon{
+  font-size: 1.2em;
+  color: black;
 }
 // ここまで
 // 投稿詳細ページ

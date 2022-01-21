@@ -12,7 +12,7 @@
           </td>
           <td>
             <% unless current_user == user %>
-              <div class="relationship">
+              <div class="relationship_<%= user.id %>">
                 <%= render "relationships/button", user: user %>
               </div>
             <% end %>
