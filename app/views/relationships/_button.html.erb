@@ -1,11 +1,11 @@
 <% if user_signed_in? %>
   <% if current_user.following?(user) %>
     <div class="btn btn-primary follow-btn">
-      <%= render "notfollow_button", user: user %>
+      <%= link_to "フォロー中", user_relationships_path(user.id), method: :delete, remote: true %>
     </div>
   <% else %>
     <div class="btn btn-success follow-btn">
-      <%= render "follow_button", user: user %>
+      <%= link_to "フォロー", user_relationships_path(user.id), method: :POST, remote: true %>
     </div>
   <% end %>
 <% else %>
