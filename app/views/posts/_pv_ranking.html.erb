@@ -9,7 +9,6 @@
     <div>
       <%= post.title %>
     </div>
-
     <div class="mb-auto ranking-post">
       <% post.post_images.first(1).each do |image| %>
         <%= link_to post_path(post.id) do %>
