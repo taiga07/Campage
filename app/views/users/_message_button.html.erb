@@ -9,8 +9,8 @@
         <%= fields_for entry do |r| %>    <!--entriesテーブルに情報を送信-->
           <%= r.hidden_field :user_id, value: user.id %>  <!--entriesテーブルにuser_idを含める-->
         <% end %>
-        <div class="btn btn-dark">
-          <%= f.submit "チャットを始める" %>
+        <div>
+          <%= f.submit "チャットを始める", class: "chat-btn" %>
         </div>
       <% end %>
     <% end %>

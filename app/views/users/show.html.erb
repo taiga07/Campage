@@ -45,7 +45,7 @@
       <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12">
           <div class="user-introduction">
-            <%= @user.introduction %>
+            <%= safe_join(@user.introduction.split("\n"),tag(:br)) %>
           </div>
         </div>
       </div>
