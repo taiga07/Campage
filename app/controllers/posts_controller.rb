@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :ranking, :pv_ranking, :good_ranking]
   before_action :set_campage, only: [:edit, :update, :destroy]
   before_action :prevent_url, only: [:edit, :update, :destroy]
 
