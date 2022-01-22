@@ -1,8 +1,8 @@
 class CommentsController < ApplicationController
 
-  before_action :authenticate_user!
-  before_action :set_campage, only: [:destroy]
-  before_action :prevent_url, only: [:destroy]
+  before_action :authenticate_user! #ログインしていないユーザーのURL直打ち対策
+  before_action :set_campage, only: [:destroy] #ログインしているユーザーのURL直打ち対策
+  before_action :prevent_url, only: [:destroy] #ログインしているユーザーのURL直打ち対策
 
   def create
     @post = Post.find(params[:post_id])

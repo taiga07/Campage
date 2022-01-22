@@ -31,10 +31,6 @@ class ContactsController < ApplicationController
     end
   end
 
-  #送信完了画面を使用する場合。
-  # def done
-  # end
-
   private
 
   def contact_params

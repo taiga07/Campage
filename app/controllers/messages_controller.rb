@@ -24,7 +24,7 @@ class MessagesController < ApplicationController
             visiter_id: current_user.id,
             action: 'dm'
         )
-        # 自分に対するDMは、通知済みとする
+           # 自分に対するDMは、通知済みとする
         if notification.visiter_id == notification.visited_id
             notification.checked = true
         end

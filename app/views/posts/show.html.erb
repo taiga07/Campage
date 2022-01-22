@@ -59,14 +59,12 @@
         <%= time_ago_in_words(@post.created_at) %>前
       </div>
     </div>
-    <div class="col-lg-3">
+    <div class="col-lg-3 d-flex flex-column align-items-center">
       <!--jsファイルに処理を記述するためにクラス名を記載-->
       <div class="comments_area">
-        <!--commentsフォルダの_comments.html.erbを呼び、データを渡している。-->
         <%= render 'comments/comments', post: @post %>
       </div>
       <div>
-        <!--commentsフォルダの_form.html.erbを呼び、データを渡している。-->
         <%= render 'comments/form', post: @post, comment: @comment %>
       </div>
     </div>

@@ -9,7 +9,6 @@
     </h4>
   </div>
   <div class="row d-flex justify-content-center">
-    <!--<div class="about-img">-->
     <% @random.each do |post| %>
       <div class="about-slick m-1">
         <% post.post_images.each do |image| %>
@@ -17,8 +16,7 @@
             <%= attachment_image_tag image, :image, style: "width: 100%" %>
           <% end %>
         <% end %>
-        </div>
-      <!--</div>-->
+      </div>
     <% end %>
   </div>
 </div>
