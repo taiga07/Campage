@@ -1,18 +1,31 @@
- <!--投稿画像に付けられたグッドにログインユーザーが含まれているか確認。-->
-<% if post.liked_by?(current_user) %>
-  <div>
-    <!--remote: trueを追記することでjsファイルを探しに行ってもらう。-->
-    <%= link_to post_likes_path(post.id), method: :delete, remote: true do %>
-      <i class="fas fa-thumbs-up"></i>
-    <% end %>
-    グッド!! <%= post.likes.count %>件
-  </div>
+<% if user_signed_in? %>
+   <!--投稿画像に付けられたグッドにログインユーザーが含まれているか確認。-->
+  <% if post.liked_by?(current_user) %>
+    <div>
+      <!--remote: trueを追記することでjsファイルを探しに行ってもらう。-->
+      <%= link_to post_likes_path(post.id), method: :delete, remote: true do %>
+        <i class="fas fa-thumbs-up like-btn2"></i>
+      <% end %>
+      グッド!! <%= post.likes.count %>件
+    </div>
+  <% else %>
+    <div>
+      <%= link_to post_likes_path(post.id), method: :post, remote: true do %>
+        <i class="far fa-thumbs-up like-btn"></i>
+      <% end %>
+      グッド!! <%= post.likes.count %>件
+    </div>
+  <% end %>
 <% else %>
   <div>
-    <!--remote: trueを追記することでjsファイルを探しに行ってもらう。-->
-    <%= link_to post_likes_path(post.id), method: :post, remote: true do %>
-      <i class="far fa-thumbs-up"></i>
+    <%= link_to new_user_session_path, data: {confirm: "グッド!!するにはログインが必要です。ページを移動しますか？"} do %>
+      <i class="far fa-thumbs-up like-btn"></i>
     <% end %>
     グッド!! <%= post.likes.count %>件
   </div>
 <% end %>
+
+
+
+
+

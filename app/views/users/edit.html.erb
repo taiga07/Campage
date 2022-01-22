@@ -1,10 +1,10 @@
 <div class="container">
-  <div class="low">
+  <div class="row d-flex align-items-center justify-content-center useredit">
     <%= form_with model: @user, local: true do |f| %>
-      <table>
+      <table class="table">
         <tr>
           <th>
-            <%= attachment_image_tag @user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
+            <%= attachment_image_tag @user, :profile_image, size: '100x100', fallback: "no_image.jpg" %>
           </th>
           <th>
             <%= @user.name %>

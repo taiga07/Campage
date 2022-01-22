@@ -1,13 +1,14 @@
 <% visiter = notification.visiter %>
 <% visited = notification.visited %>
 
-<div>
+<div class="notification-user-name">
   <%= link_to user_path(visiter) do %>
     <%= attachment_image_tag visiter, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
     <%= visiter.name %>
-    <%= "さんが" %>
   <% end %>
-
+  <%= "さんが" %>
+  
+  <!--アクションごとに表示する内容を記載している。-->
   <% case notification.action %>
     <% when 'follow' then %>
       <%= "あなたをフォローしました" %>
@@ -16,7 +17,7 @@
       <%= "にいいねしました" %>
     <% when 'comment' then %>
       <% if notification.post.user_id == visited_id %>
-        <%= link_to "あなたの投稿",notification.post %>
+        <%= link_to "あなたの投稿", notification.post %>
       <% else %>
         <%= link_to post_path(notification.post) do %>
           <%= attachment_image_tag notification.post.user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
@@ -28,27 +29,11 @@
       <p>
         <%= Comment.find_by(id: notification.comment_id)&.commnet %>
       </p>
+    <% when 'dm' then%>
+      <%= "あなたにDMを送りました" %>
   <% end %>
   <div>
-    <%= time_ago_in_words(notification.created_at).upcase %>
-    <%= "前" %>
+    <i class="far fa-clock clock-icon"></i>
+    <%= time_ago_in_words(notification.created_at).upcase %>前
   </div>
 </div>
-
-
-
-<% if false %>
-<% visiter = notification.visiter %>
-<% post = notification.post %>
-
-<div class="user-view clearfix ">
-  <%= link_to user_path(notification.visiter) do %>
-    <%= attachment_image_tag visiter, :profile_image, size: "50x50", fallback: "no_image.jpg", size: "50x50", class:"profile-img-circle" %>
-  <% end %>
-  <%= notification_form(notification) %><span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)} 前)" %></span>
-  <br>
-  <% if !@comment.nil? %>
-    <p class="moderate-font text-center" style="color: #C0C0C0;"><%= @comment %></p>
-  <% end %>
-</div>
-<% end %>

@@ -1,19 +1,16 @@
-<h2>グッド!!が多い投稿</h2>
-<div>
-  <div>
+<div class="container">
+  <h4>グッド!!が多い投稿</h4>
+  <div class="row">
     <%= render "good_ranking", posts_good_ranking: @posts_good_ranking %>
   </div>
-  <div>
+  <div class=" row d-flex justify-content-end ranking-list">
     <%= link_to "一覧で見る", posts_good_ranking_path %>
   </div>
-</div>
-
-<h2>閲覧数が多い投稿</h2>
-<div>
-  <div>
+  <h4>閲覧数が多い投稿</h4>
+  <div class="row">
     <%= render "pv_ranking", posts_pv_ranking: @posts_pv_ranking %>
   </div>
-  <div>
+  <div class=" row d-flex justify-content-end ranking-list">
     <%= link_to "一覧で見る", posts_pv_ranking_path %>
   </div>
 </div>

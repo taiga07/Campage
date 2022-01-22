@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
 
-  # impressionist :actions => [:show]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_campage, only: [:edit, :update, :destroy]
+  before_action :prevent_url, only: [:edit, :update, :destroy]
 
   def new
     @post = Post.new
@@ -12,13 +14,13 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to posts_path
     else
-      render 'new'
+      render :error
     end
   end
 
   def index
     @user = current_user
-    @posts = Post.all
+    @posts = Post.all.order(created_at: :desc) #投稿が新しい順に取得
   end
 
   def show
@@ -28,15 +30,19 @@ class PostsController < ApplicationController
     @following_users = @user.following_user  #そのユーザーがフォローした相手を格納
     @follower_users = @user.follower_user  #そのユーザーがフォローされている相手を格納
 
-    @self_room = Entry.where(user_id: current_user.id).pluck(:room_id)
-    @target_room = Entry.where(user_id: @user.id).pluck(:room_id)
-    @roomid = @self_room & @target_room
-    if @roomid.blank?
-      @room = Room.new  #新しいインスタンスを生成
-      @entry = Entry.new  #新しいインスタンスを生成
-    else
-      @isroom = true
+    # DM機能
+    if user_signed_in?
+      @self_room = Entry.where(user_id: current_user.id).pluck(:room_id)
+      @target_room = Entry.where(user_id: @user.id).pluck(:room_id)
+      @roomid = @self_room & @target_room
+      if @roomid.blank?
+        @room = Room.new  #新しいインスタンスを生成
+        @entry = Entry.new  #新しいインスタンスを生成
+      else
+        @isroom = true
+      end
     end
+    # ここまで
 
     impressionist(@post, nil, unique: [:ip_address])
 
@@ -66,19 +72,20 @@ class PostsController < ApplicationController
 
   def ranking
     #投稿一覧をPV数の多い順に取得。limit(5)で上位5つを取得している。
-    @posts_pv_ranking = Post.order(impressions_count: 'DESC').limit(5)  #DESCで降順にしている。
+    @posts_pv_ranking = Post.order(impressions_count: 'DESC').limit(4)  #DESCで降順にしている。
     #post_idが同じレコードをまとめて、post_idが同じものを数え降順に並べる。
     #（いいねテーブルに保存されているレコードを数えることでいいね数を数えることができる。）
     #上位5つを取り出し、レコードの情報をidに変更する。
-    @posts_good_ranking = Post.find(Like.group(:post_id).order('count(post_id) desc').limit(5).pluck(:post_id))
+    @posts_good_ranking = Post.find(Like.group(:post_id).order('count(post_id) desc').limit(4).pluck(:post_id))
   end
 
   def pv_ranking
-    @posts_pv_ranking = Post.order(impressions_count: 'DESC')
+    @posts_pv_ranking = Post.order(impressions_count: 'DESC').page(params[:page]).per(8)
   end
 
   def good_ranking
     @posts_good_ranking = Post.find(Like.group(:post_id).order('count(post_id) desc').pluck(:post_id))
+    @posts_good_ranking = Kaminari.paginate_array(@posts_good_ranking).page(params[:page]).per(8)
   end
 
   private
@@ -88,4 +95,13 @@ class PostsController < ApplicationController
     # 複数の画像IDになる為、配列[]で渡している。
   end
 
+  def set_campage
+    @post = Post.find(params[:id])
+  end
+
+  def prevent_url
+    if @post.user_id != current_user.id
+      redirect_to root_path
+    end
+  end
 end

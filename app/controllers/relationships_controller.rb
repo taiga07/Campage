@@ -1,5 +1,7 @@
 class RelationshipsController < ApplicationController
 
+  before_action :authenticate_user!
+
   def create
     current_user.follow(params[:user_id])
     flash.now[:notice] = 'フォローしました'
@@ -10,7 +12,7 @@ class RelationshipsController < ApplicationController
     @follower_users = @user.follower_user
     # ここまで
     @user.create_notification_follow!(current_user)
-    render :relationship  #jsファイルを指定
+    render :create  #jsファイルを指定
   end
 
   def destroy
@@ -22,7 +24,7 @@ class RelationshipsController < ApplicationController
     @following_users = @user.following_user
     @follower_users = @user.follower_user
     # ここまで
-    render :relationship  #jsファイルを指定
+    render :destroy  #jsファイルを指定
   end
 
 end

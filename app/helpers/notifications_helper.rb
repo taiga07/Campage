@@ -22,6 +22,7 @@ module NotificationsHelper
 
 
   def unchecked_notifications
+    # 通知をしてくれたデータの中から未確認のものを取得
     @notifications = current_user.passive_notifications.where(checked: false)
   end
 

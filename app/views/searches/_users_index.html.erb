@@ -1,6 +1,17 @@
-<% users.each do |user| %>
-  <%= link_to user_path(user) do %>
-    <%= attachment_image_tag user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
-    <%= user.name %>
+<table class="table d-flex justify-content-center">
+  <% users.each do |user| %>
+    <tr>
+      <td class="ranking-user-name">
+        <%= link_to user_path(user) do %>
+          <%= attachment_image_tag user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
+          <%= user.name %>
+        <% end %>
+      </td>
+      <td>
+        <div class="relationship">
+          <%= render "relationships/button", user: user %>
+        </div>
+      </td>
+    </tr>
   <% end %>
-<% end %>
+</table>

@@ -1,14 +1,18 @@
 <div class="container">
-  <div class="row flex-column">
-    <div class="slick" style="width: 60%;">
-      <% @post.post_images.each do |image| %>
-        <%= attachment_image_tag image, :image %>
-      <% end %>
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-6 postedit">
+      <div class="slick">
+        <% @post.post_images.each do |image| %>
+          <%= attachment_image_tag image, :image %>
+        <% end %>
+      </div>
+      <div class="d-flex justify-content-center">
+        <%= form_with model:@post, local: true do |f| %>
+          <div class="title-form"><%= f.text_field :title %></div>
+          <div class="body-form"><%= f.text_area :body %></div>
+          <div class="d-flex justify-content-center"><%= f.submit "変更を保存" %></div>
+        <% end %>
+      </div>
     </div>
-    <%= form_with model:@post, local: true do |f| %>
-      <div><%= f.text_field :title %></div>
-      <div><%= f.text_area :body %></div>
-      <div><%= f.submit "変更を保存" %></div>
-    <% end %>
   </div>
 </div>

@@ -1,0 +1,7 @@
+$(".relationship_<%= @user.id %>").html("<%= j(render 'relationships/button', user: @user) %>");
+
+
+$(".relationship_count").html("<%= j(render 'relationships/count', user: @user, following_users: @following_users, follower_users: @follower_users) %>");
+
+
+$('.flash_message').html("<%= j(render 'layouts/flash') %>");

@@ -26,15 +26,10 @@ class ContactsController < ApplicationController
       ContactMailer.send_mail(@contact).deliver_now
       flash.now[:notice] = "お問い合わせ内容を送信しました。"
       redirect_to root_path
-
     else
-      render :new
+      render :error
     end
   end
-
-  #送信完了画面を使用する場合。
-  # def done
-  # end
 
   private
 

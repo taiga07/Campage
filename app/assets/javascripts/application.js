@@ -19,6 +19,7 @@
 //= require turbolinks
 //= require_tree .
 
+// 投稿一覧画面のslick設定
 $(document).on('turbolinks:load', function() {
     $('.slick').slick({
         dots: true,
@@ -27,6 +28,7 @@ $(document).on('turbolinks:load', function() {
     });
 });
 
+// aboutページのslick設定
 $(document).on('turbolinks:load', function() {
     $('.about-slick').slick({
         arrows: false,
@@ -36,3 +38,16 @@ $(document).on('turbolinks:load', function() {
         autoplaySpeed:4000,
     });
 });
+
+// 新規投稿画面のpreview設定
+function loadImage(obj)
+{
+    document.getElementById('preview').innerHTML = '<p>選択した画像</p>';
+    for (i = 0; i < obj.files.length; i++) {
+    	var fileReader = new FileReader();
+    	fileReader.onload = (function (e) {
+    		document.getElementById('preview').innerHTML += '<img src="' + e.target.result + '">';
+    	});
+    	fileReader.readAsDataURL(obj.files[i]);
+    }
+}

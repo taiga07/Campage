@@ -16,35 +16,383 @@
 
 @import "bootstrap";
 
-header {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  word-wrap : break-word;
+}
+
+
+.homes {
+  background: image-url('backimage.JPG');
+  background-size: cover;
+  background-position: center;
+}
+
+// ヘッダー
+.header {
+  position: relative;
+}
+.site-name a {
+  font-family: 'The Nautigal', sans-serif;
+  margin: 0 10px;
+  color: #FF9900;
+}
+
+.nav-item a{
+  color: #FF9900;
+  margin: 0 5px;
+}
+.navbar-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,153,0,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.navbar-toggler{
+  border-color: #FF9900;
+}
+
+.n-camp, .n-good {
+  font-size: 1em;
+}
+
+.n-plus, .n-circle {
+  position: absolute;
+  padding-left: 0.1rem;
+  padding-top: 0rem;
+  color: #CC9900;
+}
+.header-image a img, .user-name a img, .comment-user a img, .dm-user img, .dm-title img{
+  width:  50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+// ここまで
+// フッター下に固定
+body {
   display: flex;
-  justify-content: flex-end;
-}
-header > :first-child {
-  margin-right: auto;
+  flex-flow: column;
+  min-height: 100vh;
 }
 
-.nav {
-  list-style: none;
-  display: flex;
-  align-items: center;
+main {
+  flex: 1;
+}
+// ここまで
+// トップ、アバウト、devise
+.text-box {
+  margin: 70px 0;
+}
+.top-text, .about-text{
+  color: #FFFFFF;
 }
 
-.nav li {
-  margin-right: 10px;
+.login, .signup {
+  margin: 70px 0;
+}
+.signuptitle, .signupbtn, .contactbtn, .contact-sendbtn, .contact-backbtn{
+  text-align: center;
+}
+.about-slick {
+  width: 250px;
+}
+// ここまで
+// 検索一覧
+.follow-btn a, .notfollow-btn a{
+  font-size: 12pt;
+  color: white;
+}
+.search-box, .follow-box, .notification-box, .postnew, .useredit{
+  margin: 20px 0;
+}
+// ここまで
+// slick設定
+.slick-prev:before, .slick-next:before {
+  color: #000;/*黒にする*/
+  opacity: .40;/*デフォルトは.75が指定されている*/
+}
+.slick img, .ranking-post img{
+  width: 100%;
+  // box-sizing: border-box;
+  // height: auto;
+}
+.slick-prev {
+  left: 0;
+  z-index: 1;
 }
 
-.nav li a {
-  color: orange;
+.slick-next {
+  right: 0;
+}
+// ここまで
+// 新規投稿ページ
+.postnew-title, .postmew, .image-form, .title-form, .body-form{
+  margin-bottom: 35px;
+}
+.title-form input{
+  width: 320px;
+  height: 40px;
+}
+.body-form textarea{
+  width: 320px;
+  height: 200px;
+}
+.share-botton{
+  display       : inline-block;
+  border-radius : 20%;          /* 角丸       */
+  font-size     : 13pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 11px 24px;   /* 余白       */
+  background    : #cccccc;     /* 背景色     */
+  color         : #000000;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  border        : 2px solid #999999;    /* 枠の指定 */
+}
+.share-botton:hover {
+  color         : #000000;     /* 背景色     */
+  background    : #66ff66;     /* 文字色     */
+}
+#preview img {
+  width: 25%;
+  height: auto;
+}
+// ここまで
+// 投稿一覧ページ
+.sideber{
+  position: sticky;
+  top: 70px;
+}
+.sideber a img, .postshow-user a img{
+  width:  70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.post-boxes, .postnew, .post-box, .postedit{
+  margin-bottom: 50px;
+  border-width: 1px;
+	border-color: #CCCCCC;
+	border-style: solid;
+}
+.post-boxes{
+  margin: 0 20px 40px 20px;
+}
+.user-name, .ranking-user-name, .follow-user-name{
+  border-width: 1px;
+	border-color: #CCCCCC;
+	border-bottom-style: solid;
+	font-weight: bold;
+}
+.user-name, .post-title, .like-btn, .like-btn2, .post-like, .post-body, .post-comment-link, .time, .pv-icon{
+  padding: 2px 15px;
+}
+.like-btn{
+  font-size: 1.5em;
+  color: black;
+}
+.like-btn2{
+  font-size: 1.5em;
+  color: #CC0000;
+}
+.pv-icon{
+  font-size: 1.2em;
+  color: black;
+}
+// ここまで
+// 投稿詳細ページ
+.postshow, .postedit{
+  margin-top: 30px;
+}
+.postshow-user, .user-introduction, .post-edit, .post-destroy{
+  margin-bottom: 20px;
+}
+.post-edit-btn, .post-destroy-btn, .user-edit-btn a{
+  font-size: 1.2em;
+  color: black;
+}
+.comment-destroy a{
+  color: red;
+}
+.message-btn{
+  margin-bottom: 10px;
+}
+.message-btn a{
+  color: white;
+}
+
+// ここまで
+// マイページ
+.user-inf{
+  margin: 20px 0;
+}
+.ranking-user-name a, .relationship_count a, .comment-user a, .logout-btn a, .follow-user-name a{
+  font-size: 12pt;
+  color: black;
+}
+.mypage img{
+  width: 32%;
+  height: auto;
+  margin-bottom: 4px;
+}
+.profile-image img{
+  width:  200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+// ここまで
+// 会員編集ページ
+th img{
+  width:  100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+// ここまで
+// ランキング
+.ranking-user-name a img, .notification-user-name a img, .follow-user-name a img{
+  width:  40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.postranking{
+  border-width: 1px;
+	border-color: #CCCCCC;
+	border-style: solid;
+}
+// ここまで
+// お問い合わせ画面
+.contact-title{
+  text-align: center;
+}
+.confirm-box{
+  margin: 20px 0;
+  border-width: 3px;
+	border-color: #CCCCCC;
+	border-style: solid;
+}
+dt{
+  margin-bottom: 3px;
+}
+// ここまで
+
+
+
+
+.table th,
+.table td {
+  border:none;
+}
+
+// トップへボタン
+#page_top{
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  // background: #ef3f98;
+  // opacity: 0.6;
+  border-radius: 50%;
+}
+#page_top a{
+  position: relative;
+  display: block;
+  width: 50px;
+  height: 50px;
   text-decoration: none;
 }
+#page_top a::before{
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  content: '\f106';
+  font-size: 25px;
+  color: #808080;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: -5px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  text-align: center;
+}
+// ここまで
 
-.mypage img {
-  width: 33%;
-  height: auto;
+.dm-box{
+  padding: 0 10%;
+  border-width: 2px;
+	border-color: #CCCCCC;
+	border-style: solid;
+}
+.messages_area{
+  border-width: 4px;
+	border-color: #CCCCCC;
+	border-style: solid;
+}
+.dm-title{
+  font-weight: bold;
+}
+.dm-table{
+  table-layout: fixed;
+  width: 100%;
+}
+.dm-user{
+  width: 74px;
 }
 
-.search-image img {
-  width: 33%;
-  height: auto;
+@media screen and (max-width: 768px){
+  .about-text{
+    font-size: 18px;
+  }
+}
+@media screen and (max-width: 767px){
+  .top-text{
+    font-size: 22px;
+  }
+  .about-text{
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 575px){
+  .profile-image img{
+  width:  100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  }
+}
+@media screen and (max-width: 425px){
+  .top-text{
+    font-size: 17px;
+    font-weight: bold;
+  }
+  .about-text{
+    font-size: 17px;
+    font-weight: bold;
+    .br-sp {display: none; }
+  }
+}
+
+
+@media screen and (max-width: 414px){
+  .top-text{
+    font-size: 15px;
+    font-weight: bold;
+  }
+  .about-text{
+    font-size: 16px;
+    font-weight: bold;
+    .br-sp {display: none; }
+  }
+}
+
+@media screen and (max-width: 320px){
+  .top-text{
+    font-size: 12px;
+    font-weight: bold;
+  }
 }

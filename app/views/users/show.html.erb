@@ -1,49 +1,137 @@
 <div class="container">
-  <div class="row">
-    <div class="col-lg-3">
-      <div>
-        <%= attachment_image_tag @user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
-        <%= @user.name %>
-      </div>
-      <div>
-        <%= @user.introduction %>
-      </div>
+  <div class="row user-inf">
+    <div class="col-lg-3 col-md-5 col-sm-5 col-4 profile-image">
+      <%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg" %>
+    </div>
+    <div class="col-lg-9 col-md-7 col-sm-7 col-8">
       <% if current_user != @user %>
-        <div class="relationship_count">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <h3><%= @user.name %></h3>
+          </div>
+        </div>
+        <div class="row relationship_count">
           <%= render "relationships/count",user: @user, following_users: @following_users, follower_users: @follower_users %>
         </div>
-        <div class="relationship">
-          <%= render "relationships/button", user: @user %>
-        </div>
-        <div>
-          <%= render "message_button", user: @user, isroom: @isroom, room: @room, entry: @entry, roomid: @roomid %>
+        <div class="row">
+          <div class="col-lg-5 col-md-5 col-sm-12 relationship_<%= @user.id %>">
+            <%= render "relationships/button", user: @user %>
+          </div>
+          <div class="col-lg-5 col-md-5 col-sm-12 message-btn">
+            <%= render "message_button", user: @user, isroom: @isroom, room: @room, entry: @entry, roomid: @roomid %>
+          </div>
         </div>
       <% else %>
-        <div class="relationship_count">
-          <%= render "relationships/count",user: @user, following_users: @following_users, follower_users: @follower_users %>
+        <div class="row">
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <h3><%= @user.name %></h3>
+          </div>
+          <div class="col-lg-4 col-md-3 col-sm-12 user-edit-btn">
+            <%= link_to edit_user_path(current_user.id) do %>
+              <i class="fas fa-user-edit"></i>
+            <% end %>
+          </div>
+          <div class="col-lg-4 col-md-3 col-sm-12 logout-btn">
+            <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+          </div>
         </div>
-        <div>
-          <%= link_to "edit", edit_user_path(current_user.id) %>
-        </div>
-        <div>
-          <%= link_to "DMリスト",rooms_path %>
-        </div>
-        <div>
-          <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+        <div class="row relationship_count">
+            <%= render "relationships/count", user: @user, following_users: @following_users, follower_users: @follower_users %>
+          <div class="col-lg-4 col-md-4 col-sm-12">
+            <%= link_to "DMリスト",rooms_path %>
+          </div>
         </div>
       <% end %>
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <div class="user-introduction">
+            <%= @user.introduction %>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col-lg-9">
-      <div class="mypage">
-        <% @posts.each do |post| %>
-          <% post.post_images.first(1).each do |image| %>
-            <%= link_to post_path(post.id) do %>
-              <%= attachment_image_tag image, :image %>
-            <% end %>
+  </div>
+  <div class="row">
+    <div class="mypage">
+      <% @posts.each do |post| %>
+        <% post.post_images.first(1).each do |image| %>
+          <%= link_to post_path(post.id) do %>
+            <%= attachment_image_tag image, :image %>
           <% end %>
         <% end %>
-    　</div>
-    </div>
+      <% end %>
+  　</div>
   </div>
 </div>
 
+
+
+
+
+
+
+
+
+<% if false %>
+
+      <div class=profile-image>
+        <%= attachment_image_tag @user, :profile_image, size: '200x200', fallback: "no_image.jpg" %>
+      </div>
+
+      <div class="row-box">
+        <div class="row">
+          <div class="rowlist">
+            <h2><%= @user.name %></h2>
+          </div>
+          <% if current_user != @user %>
+            <div class="relationship_count">
+              <%= render "relationships/count",user: @user, following_users: @following_users, follower_users: @follower_users %>
+            </div>
+            <div class="relationship">
+              <%= render "relationships/button", user: @user %>
+            </div>
+            <div>
+              <%= render "message_button", user: @user, isroom: @isroom, room: @room, entry: @entry, roomid: @roomid %>
+            </div>
+          <% else %>
+            <div class="rowlist">
+              <%= link_to edit_user_path(current_user.id) do %>
+                <i class="fas fa-user-edit"></i>
+              <% end %>
+            </div>
+            <div class="rowlist">
+              <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+            </div>
+        </div>
+        <div class="row">
+            <div class="relationship_count">
+              <%= render "relationships/count", user: @user, following_users: @following_users, follower_users: @follower_users %>
+            </div>
+            <div class="rowlist">
+              <%= link_to "DMリスト",rooms_path %>
+            </div>
+          <% end %>
+        </div>
+        <div class="row">
+          <div class="user-introduction">
+            <%= @user.introduction %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mypage">
+      <% @posts.each do |post| %>
+        <% post.post_images.first(1).each do |image| %>
+          <%= link_to post_path(post.id) do %>
+            <%= attachment_image_tag image, :image %>
+          <% end %>
+        <% end %>
+      <% end %>
+  　</div>
+  </div>
+</div>
+
+
+
+<% end %>

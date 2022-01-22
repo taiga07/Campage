@@ -1,8 +1,13 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  validates :name, {presence: true, length: {maximum: 20}}
+  validates :phone_number, presence: true
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+
 
   attachment :profile_image
 
@@ -11,8 +16,10 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
+
   #entriesテーブルを経由してroomsテーブルにアクセスできる。（user.roomsで情報が取れる）
   has_many :rooms, through: :entries
+
   # Relationshipモデルをfollowerとfollowedの二つに分ける。
   # followerモデルはfollower_idのデータが入る。
   # フォローする側から見てフォローされる側のデータを取得する。（フォローした相手のデータ）
@@ -27,7 +34,7 @@ class User < ApplicationRecord
 
   # 通知を送ったユーザー（visiter_idを参考にactive_notificationsモデルにアクセスする。）
   has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
-  # 通知をもらったユーザー（visited_idを参考にpassive_notificationsモデルにアクセスする。）
+  # 通知をしてくれたユーザー（visited_idを参考にpassive_notificationsモデルにアクセスする。）
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
 
   # ユーザーをフォローする
@@ -56,5 +63,4 @@ class User < ApplicationRecord
       notification.save if notification.valid?
     end
   end
-
 end

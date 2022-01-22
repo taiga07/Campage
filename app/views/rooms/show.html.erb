@@ -1,16 +1,16 @@
-<div class="container">
-  <div class="row">
-    <h2>
-      <% @entries.each do |e| %>
-        <%= attachment_image_tag e.user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
-        <%= e.user.name %>さん
-      <% end %>
-    </h2>
-    <div class="messages_area">
-      <%= render "messages/messages", messages: @messages %>
-    </div>
-    <div class="message_form">
-      <%= render "messages/form" %>
-    </div>
-  </div>
+<div class="row d-flex justify-content-center align-items-center mt-4 dm-title">
+  <% @entries.each do |e| %>
+    <% if e.user.id != current_user.id %>
+      <%= attachment_image_tag e.user, :profile_image, size: '50x50', fallback: "no_image.jpg" %>
+      <%= e.user.name %>さんとのトーク
+    <% end %>
+  <% end %>
 </div>
+<div class="messages_area">
+  <%= render "messages/messages", messages: @messages %>
+</div>
+<div class="d-flex justify-content-center mt-2 message_form">
+  <%= render "messages/form" %>
+</div>
+
+<div id="page_top"><a href="#"></a></div>
