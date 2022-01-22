@@ -63,7 +63,20 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "Campage_#{Rails.env}"
 
-  config.action_mailer.perform_caching = false
+  # メール送信に失敗した際にエラーを出す（true）に変更
+  config.action_mailer.perform_caching = true
+  # メールの送信方法をsmtpに設定（デフォルト）
+  config.action_mailer.delivery_method = :smtp
+    # smtpの設定
+    config.action_mailer.smtp_settings = {
+      port: 587,  #smtpサーバーのポート番号
+      address: 'smtp.gmail.com',  #smtpサーバーのホスト名
+      domain: 'smtp.gmail.com',
+      user_name: ENV['SMTP_USERNAME'],  #メールの送信に使用するgmail（環境変数使用）
+      password: ENV['SMTP_PASSWORD'],  #そのアカウントのパスワード（環境変数使用）
+      authentication: 'plain',  #認証方法を選択
+      enable_starttls_auto: true  #メールの送信にTLS認証を使用するか
+    }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
