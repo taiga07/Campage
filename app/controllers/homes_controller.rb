@@ -4,7 +4,11 @@ class HomesController < ApplicationController
   end
 
   def about
-    @random = Post.order("RANDOM()").limit(3)
+    if Rails.env.production?
+      @random = Post.order("RAND()").limit(3)
+    else
+      @random = Post.order("RANDOM()").limit(3)
+    end
   end
 
 end
