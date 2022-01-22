@@ -7,7 +7,7 @@
     <%= visiter.name %>
   <% end %>
   <%= "さんが" %>
-  
+
   <!--アクションごとに表示する内容を記載している。-->
   <% case notification.action %>
     <% when 'follow' then %>
@@ -16,7 +16,7 @@
       <%= link_to 'あなたの投稿', notification.post %>
       <%= "にいいねしました" %>
     <% when 'comment' then %>
-      <% if notification.post.user_id == visited_id %>
+      <% if notification.post.user_id == visited.id %>
         <%= link_to "あなたの投稿", notification.post %>
       <% else %>
         <%= link_to post_path(notification.post) do %>
@@ -27,7 +27,7 @@
       <% end %>
       <%= "にコメントしました" %>
       <p>
-        <%= Comment.find_by(id: notification.comment_id)&.commnet %>
+        <%= Comment.find_by(id: notification.comment_id)&.comment %>
       </p>
     <% when 'dm' then%>
       <%= "あなたにDMを送りました" %>

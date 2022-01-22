@@ -138,7 +138,7 @@ main {
   width: 320px;
   height: 200px;
 }
-.share-botton{
+.share-btn{
   display       : inline-block;
   border-radius : 20%;          /* 角丸       */
   font-size     : 13pt;        /* 文字サイズ */
@@ -151,7 +151,7 @@ main {
   transition    : .3s;         /* なめらか変化 */
   border        : 2px solid #999999;    /* 枠の指定 */
 }
-.share-botton:hover {
+.share-btn:hover {
   color         : #000000;     /* 背景色     */
   background    : #66ff66;     /* 文字色     */
 }
@@ -222,7 +222,18 @@ main {
 .message-btn a{
   color: white;
 }
-
+.chat-btn {
+  display       : inline-block;
+  border-radius : 6%;          /* 角丸       */
+  font-size     : 12pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 7px 17px;   /* 余白       */
+  background    : #343a40;     /* 背景色     */
+  color         : #ffffff;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+}
 // ここまで
 // マイページ
 .user-inf{

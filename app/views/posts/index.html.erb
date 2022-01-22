@@ -35,7 +35,7 @@
             <%= render "likes/like", post: post %>
           </div>
           <div class="post-body">
-            <%= post.body %>
+            <%= safe_join(post.body.split("\n"),tag(:br)) %>
           </div>
           <div class="post-comment-link">
             <%= link_to "コメント#{post.comments.count}件",post_path(post.id) %>
