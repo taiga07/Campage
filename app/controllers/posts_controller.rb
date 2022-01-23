@@ -72,19 +72,19 @@ class PostsController < ApplicationController
 
   def ranking
     #投稿一覧をPV数の多い順に取得。limit(5)で上位5つを取得している。
-    @posts_pv_ranking = Post.order(impressions_count: 'DESC').limit(4)  #DESCで降順にしている。
+    @posts_pv_ranking = Post.where(created_at: Time.current.all_month).order(impressions_count: 'DESC').limit(4)  #DESCで降順にしている。
     #post_idが同じレコードをまとめて、post_idが同じものを数え降順に並べる。
     #（いいねテーブルに保存されているレコードを数えることでいいね数を数えることができる。）
     #上位5つを取り出し、レコードの情報をidに変更する。
-    @posts_good_ranking = Post.find(Like.group(:post_id).order('count(post_id) desc').limit(4).pluck(:post_id))
+    @posts_good_ranking = Post.find(Like.group(:post_id).where(created_at: Time.current.all_month).order('count(post_id) desc').limit(4).pluck(:post_id))
   end
 
   def pv_ranking
-    @posts_pv_ranking = Post.order(impressions_count: 'DESC').page(params[:page]).per(8)
+    @posts_pv_ranking = Post.where(created_at: Time.current.all_month).order(impressions_count: 'DESC').page(params[:page]).per(8)
   end
 
   def good_ranking
-    @posts_good_ranking = Post.find(Like.group(:post_id).order('count(post_id) desc').pluck(:post_id))
+    @posts_good_ranking = Post.find(Like.group(:post_id).where(created_at: Time.current.all_month).order('count(post_id) desc').pluck(:post_id))
     @posts_good_ranking = Kaminari.paginate_array(@posts_good_ranking).page(params[:page]).per(8)
   end
 
