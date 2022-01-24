@@ -1,11 +1,11 @@
 <% if user_signed_in? %>
-  <% if current_user.id != user.id %>    <!--現在ログインしているユーザーではない場合-->
-    <% if isroom == true %>    <!--既にルームが作成されていれば-->
+  <% if current_user.id != user.id %>
+    <% if isroom == true %>
       <div class="btn btn-dark">
-        <%= link_to "メッセージ", room_path(roomid) %>    <!--そのチャットルームに遷移するボタンを表示-->
+        <%= link_to "メッセージ", room_path(roomid) %>
       </div>
-    <% else %>  <!--ルームがなければ-->
-      <%= form_with model: room, local: true do |f| %>    <!--roomsテーブルに情報を送信-->
+    <% else %>
+      <%= form_with model: room, local: true do |f| %>
         <%= fields_for entry do |r| %>    <!--entriesテーブルに情報を送信-->
           <%= r.hidden_field :user_id, value: user.id %>  <!--entriesテーブルにuser_idを含める-->
         <% end %>

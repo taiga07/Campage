@@ -42,8 +42,6 @@
           <%= attachment_image_tag image, :image %>
         <% end %>
       </div>
-      <!--どの投稿も同じ部分テンプレートを使うので、グッドを押すと全ての投稿にグッドがついてしまうので、-->
-      <!--部分テンプレート自体にidをつけることで、投稿ごとにグッドをすることができる。-->
       <div class="like_btn_<%= @post.id %>">
         <%= render "likes/like", post: @post %>
       </div>
@@ -60,7 +58,6 @@
       </div>
     </div>
     <div class="col-lg-3 pl-4">
-      <!--jsファイルに処理を記述するためにクラス名を記載-->
       <div class="comments_area">
         <%= render 'comments/comments', post: @post %>
       </div>

@@ -2,9 +2,7 @@
   <div class="contact-title">
     <h3>お問い合わせフォーム</h3>
   </div>
-  <!--urlを確認画面のurlにすることで、データを確認画面に送っている。-->
   <%= form_with model: @contact, url: confirm_contacts_path, local: true do |f| %>
-    
     <div class="form-group">
       <%= f.label :お名前 %>
       <%= f.text_field :name, autofoucus: true, class: 'form-control' %>

@@ -10,7 +10,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.user_id = current_user.id  # postsテーブルの会員IDにログインユーザーのIDを付与する
+    @post.user_id = current_user.id
     if @post.save
       redirect_to posts_path
     else
@@ -20,15 +20,15 @@ class PostsController < ApplicationController
 
   def index
     @user = current_user
-    @posts = Post.all.order(created_at: :desc) #投稿が新しい順に取得
+    @posts = Post.all.order(created_at: :desc)
   end
 
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
-    @user = @post.user  #投稿に紐付いたユーザー情報を格納
-    @following_users = @user.following_user  #そのユーザーがフォローした相手を格納
-    @follower_users = @user.follower_user  #そのユーザーがフォローされている相手を格納
+    @user = @post.user
+    @following_users = @user.following_user
+    @follower_users = @user.follower_user
 
     # DM機能
     if user_signed_in?
@@ -36,16 +36,14 @@ class PostsController < ApplicationController
       @target_room = Entry.where(user_id: @user.id).pluck(:room_id)
       @roomid = @self_room & @target_room
       if @roomid.blank?
-        @room = Room.new  #新しいインスタンスを生成
-        @entry = Entry.new  #新しいインスタンスを生成
+        @room = Room.new
+        @entry = Entry.new
       else
         @isroom = true
       end
     end
     # ここまで
-
     impressionist(@post, nil, unique: [:ip_address])
-
   end
 
   def edit
@@ -68,14 +66,12 @@ class PostsController < ApplicationController
     redirect_to user_path(current_user.id)
   end
 
-
-
   def ranking
-    #投稿一覧をPV数の多い順に取得。limit(5)で上位5つを取得している。
+    #投稿一覧をPV数の多い順に取得。limit(4)で上位4つを取得している。
     @posts_pv_ranking = Post.where(created_at: Time.current.all_month).order(impressions_count: 'DESC').limit(4)  #DESCで降順にしている。
     #post_idが同じレコードをまとめて、post_idが同じものを数え降順に並べる。
     #（いいねテーブルに保存されているレコードを数えることでいいね数を数えることができる。）
-    #上位5つを取り出し、レコードの情報をidに変更する。
+    #上位4つを取り出し、レコードの情報をidに変更する。
     @posts_good_ranking = Post.find(Like.group(:post_id).where(created_at: Time.current.all_month).order('count(post_id) desc').limit(4).pluck(:post_id))
   end
 
@@ -87,6 +83,8 @@ class PostsController < ApplicationController
     @posts_good_ranking = Post.find(Like.group(:post_id).where(created_at: Time.current.all_month).order('count(post_id) desc').pluck(:post_id))
     @posts_good_ranking = Kaminari.paginate_array(@posts_good_ranking).page(params[:page]).per(8)
   end
+
+
 
   private
 

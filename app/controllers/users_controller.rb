@@ -5,10 +5,10 @@ class UsersController < ApplicationController
   before_action :prevent_url, only: [:edit, :update]
 
   def show
-    @user = User.find(params[:id])  #ユーザーの情報を取得
-    @posts = @user.posts.order(created_at: :desc)  #そのユーザーに紐づいた投稿を新しい順に@postsに格納
-    @following_users = @user.following_user  #そのユーザーがフォローした相手を格納
-    @follower_users = @user.follower_user  #そのユーザーがフォローされている相手を格納
+    @user = User.find(params[:id])
+    @posts = @user.posts.order(created_at: :desc)
+    @following_users = @user.following_user
+    @follower_users = @user.follower_user
 
     if user_signed_in?
       # DM機能
@@ -16,8 +16,8 @@ class UsersController < ApplicationController
       @target_room = Entry.where(user_id: params[:id]).pluck(:room_id)
       @roomid = @self_room & @target_room
       if @roomid.blank?
-        @room = Room.new  #新しいインスタンスを生成
-        @entry = Entry.new  #新しいインスタンスを生成
+        @room = Room.new
+        @entry = Entry.new
       else
         @isroom = true
       end
@@ -40,17 +40,13 @@ class UsersController < ApplicationController
 
   # フォロー一覧
   def follows
-    # 特定のユーザー情報を取得
     @user = User.find(params[:id])
-    # そのユーザーにフォローされているユーザーを@usersに格納
     @users = @user.following_user.page(params[:page]).per(10)
   end
 
   # フォロワー一覧
   def followers
-    # 特定のユーザー情報を取得
     @user = User.find(params[:id])
-    # そのユーザーがフォローされているユーザーを@usersに格納
     @users = @user.follower_user.page(params[:page]).per(10)
   end
 

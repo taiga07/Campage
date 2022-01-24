@@ -30,6 +30,10 @@
   background-position: center;
 }
 
+.table th,
+.table td {
+  border:none;
+}
 // ヘッダー
 .header {
   position: relative;
@@ -69,6 +73,7 @@
   object-fit: cover;
 }
 // ここまで
+
 // フッター下に固定
 body {
   display: flex;
@@ -80,6 +85,7 @@ main {
   flex: 1;
 }
 // ここまで
+
 // トップ、アバウト、devise
 .text-box {
   margin: 70px 0;
@@ -98,6 +104,7 @@ main {
   width: 250px;
 }
 // ここまで
+
 // 検索一覧
 .follow-btn a, .notfollow-btn a{
   font-size: 12pt;
@@ -107,6 +114,7 @@ main {
   margin: 20px 0;
 }
 // ここまで
+
 // slick設定
 .slick-prev:before, .slick-next:before {
   color: #000;/*黒にする*/
@@ -114,8 +122,6 @@ main {
 }
 .slick img, .ranking-post img{
   width: 100%;
-  // box-sizing: border-box;
-  // height: auto;
 }
 .slick-prev {
   left: 0;
@@ -126,6 +132,7 @@ main {
   right: 0;
 }
 // ここまで
+
 // 新規投稿ページ
 .postnew-title, .postmew, .image-form, .title-form, .body-form{
   margin-bottom: 35px;
@@ -160,6 +167,7 @@ main {
   height: auto;
 }
 // ここまで
+
 // 投稿一覧ページ
 .sideber{
   position: sticky;
@@ -202,6 +210,7 @@ main {
   color: black;
 }
 // ここまで
+
 // 投稿詳細ページ
 .postshow, .postedit{
   margin-top: 30px;
@@ -235,6 +244,7 @@ main {
   transition    : .3s;         /* なめらか変化 */
 }
 // ここまで
+
 // マイページ
 .user-inf{
   margin: 20px 0;
@@ -255,6 +265,7 @@ main {
   object-fit: cover;
 }
 // ここまで
+
 // 会員編集ページ
 th img{
   width:  100px;
@@ -263,6 +274,7 @@ th img{
   object-fit: cover;
 }
 // ここまで
+
 // ランキング
 .ranking-user-name a img, .notification-user-name a img, .follow-user-name a img{
   width:  40px;
@@ -276,6 +288,7 @@ th img{
 	border-style: solid;
 }
 // ここまで
+
 // お問い合わせ画面
 .contact-title{
   text-align: center;
@@ -291,21 +304,11 @@ dt{
 }
 // ここまで
 
-
-
-
-.table th,
-.table td {
-  border:none;
-}
-
 // トップへボタン
 #page_top{
   position: fixed;
   right: 0;
   bottom: 0;
-  // background: #ef3f98;
-  // opacity: 0.6;
   border-radius: 50%;
 }
 #page_top a{
@@ -333,6 +336,7 @@ dt{
 }
 // ここまで
 
+// DM機能
 .dm-box{
   padding: 0 10%;
   border-width: 2px;
@@ -354,6 +358,7 @@ dt{
 .dm-user{
   width: 74px;
 }
+// ここまで
 
 @media screen and (max-width: 768px){
   .about-text{

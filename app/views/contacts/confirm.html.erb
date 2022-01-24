@@ -1,4 +1,3 @@
-<!--newページで入力されたデータを表示している。-->
 <div class="container">
   <div class="confirm-box">
     <div class="contact-title">
@@ -15,9 +14,6 @@
     	<dd><%= @contact.body %></dd>
     </dl>
   </div>
-
-
-
   <div class="contact-sendbtn">
     <!--コントローラーに情報を送り、createアクションが実行される。-->
     <%=form_with model: @contact, local: true do |f| %>

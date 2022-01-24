@@ -4,17 +4,13 @@ class ContactsController < ApplicationController
     @contact = Contact.new
   end
 
-
-
   def confirm
-    @contact = Contact.new(contact_params)  # newアクションから入力内容を受け取る。
-    if @contact.invalid?  #バリデーションエラーが発生した場合trueを返す。
+    @contact = Contact.new(contact_params)。
+    if @contact.invalid?
       render :new
     end
   end
 
-  # 入力内容の変更をしたい場合、
-  # backアクションを定義することでデータを残したまま戻れる。
   def back
     @contact = Contact.new(contact_params)
     render :new
