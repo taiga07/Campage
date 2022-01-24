@@ -33,7 +33,7 @@ Rails.application.configure do
   # Don't care if the mailer can't send.
   # メール送信に失敗した際にエラーを出す（true）に変更
   config.action_mailer.raise_delivery_errors = true
-  host = 'localhost:3000'
+  host = '8b0a53729eb7407f860fdceea324f010.vfs.cloud9.ap-northeast-1.amazonaws.com'
   config.action_mailer.default_url_options = { host: host, protocol: 'http' }
   # メールの送信方法をsmtpに設定（デフォルト）
   config.action_mailer.delivery_method = :smtp

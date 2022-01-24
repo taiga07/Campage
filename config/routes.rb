@@ -20,7 +20,9 @@ Rails.application.routes.draw do
     member do
       post :confirm
       post :back
-      get :done
+      # getのconfirmとbackに行ったらnewにリダイレクトする記述
+      get "confirm" => redirect("contacts/new")
+      get "back" => redirect("contacts/new")
     end
   end
 
