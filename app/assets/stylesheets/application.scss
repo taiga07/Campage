@@ -38,12 +38,6 @@
 .header {
   position: relative;
 }
-.site-name a {
-  font-family: 'The Nautigal', sans-serif;
-  margin: 0 10px;
-  color: #FF9900;
-}
-
 .nav-item a{
   color: #FF9900;
   margin: 0 5px;
@@ -51,20 +45,12 @@
 .navbar-toggler .navbar-toggler-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,153,0,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
-
 .navbar-toggler{
   border-color: #FF9900;
 }
-
-// .navbar-brand{
-//   width: 150px;
-//   height: 90px;
-// }
-
 .n-camp, .n-good {
   font-size: 1em;
 }
-
 .n-plus, .n-circle {
   position: absolute;
   padding-left: 0.1rem;
@@ -85,7 +71,6 @@ body {
   flex-flow: column;
   min-height: 100vh;
 }
-
 main {
   flex: 1;
 }
@@ -98,7 +83,6 @@ main {
 .top-text, .about-text{
   color: #FFFFFF;
 }
-
 .login, .signup, .edit-password {
   margin: 70px 0;
 }
