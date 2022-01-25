@@ -27,7 +27,7 @@
 .homes {
   background: image-url('backimage.JPG');
   background-size: cover;
-  background-position: center;
+  background-position: bottom center;
 }
 
 .table th,
@@ -55,6 +55,11 @@
 .navbar-toggler{
   border-color: #FF9900;
 }
+
+// .navbar-brand{
+//   width: 150px;
+//   height: 90px;
+// }
 
 .n-camp, .n-good {
   font-size: 1em;
