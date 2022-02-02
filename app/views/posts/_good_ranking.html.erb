@@ -12,7 +12,7 @@
     <div class="mb-auto ranking-post">
       <% post.post_images.first(1).each do |image| %>
         <%= link_to post_path(post.id) do %>
-          <%= attachment_image_tag image, :image %>
+          <%= attachment_image_tag image, :image, class: "ranking_image" %>
         <% end %>
       <% end %>
   　</div>

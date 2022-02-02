@@ -39,7 +39,7 @@
       </div>
       <div class="slick">
         <% @post.post_images.each do |image| %>
-          <%= attachment_image_tag image, :image %>
+          <%= attachment_image_tag image, :image, class: 'slick_image' %>
         <% end %>
       </div>
       <div class="like_btn_<%= @post.id %>">

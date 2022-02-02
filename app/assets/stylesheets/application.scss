@@ -120,6 +120,21 @@ main {
 .slick-next {
   right: 0;
 }
+
+.slick{
+  height: 300px;
+  width: 100%;
+}
+.slick_image{
+  height: 300px;
+  width: 100%;
+  object-fit: contain;
+}
+.ranking_image{
+  height: 200px;
+  width: 100%;
+  object-fit: contain;
+}
 // ここまで
 
 // 新規投稿ページ
