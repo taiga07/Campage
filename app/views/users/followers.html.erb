@@ -1,6 +1,8 @@
 <div class="container">
   <div class="d-flex flex-column align-items-center follow-box">
-    <h4>フォロワー一覧</h4>
+    <h4>
+      <%= @user.name %>さんのフォロワー一覧
+    </h4>
     <table class="table d-flex justify-content-center">
       <% @users.each do |user| %>
         <tr>
