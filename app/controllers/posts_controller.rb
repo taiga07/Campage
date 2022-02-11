@@ -72,16 +72,19 @@ class PostsController < ApplicationController
     #post_idが同じレコードをまとめて、post_idが同じものを数え降順に並べる。
     #（いいねテーブルに保存されているレコードを数えることでいいね数を数えることができる。）
     #上位4つを取り出し、レコードの情報をidに変更する。
-    @posts_good_ranking = Post.find(Like.group(:post_id).where(created_at: Time.current.all_month).order('count(post_id) desc').limit(4).pluck(:post_id))
+    @posts_good_ranking = Post.find(Like.group(:post_id).where(created_at: Time.current.all_month).order('count(post_id) DESC').limit(4).pluck(:post_id))
+    @date1 = Date.current.strftime('%m')
   end
 
   def pv_ranking
     @posts_pv_ranking = Post.where(created_at: Time.current.all_month).order(impressions_count: 'DESC').page(params[:page]).per(8)
+    @date1 = Date.current.strftime('%m')
   end
 
   def good_ranking
-    @posts_good_ranking = Post.find(Like.group(:post_id).where(created_at: Time.current.all_month).order('count(post_id) desc').pluck(:post_id))
+    @posts_good_ranking = Post.find(Like.group(:post_id).where(created_at: Time.current.all_month).order('count(post_id) DESC').pluck(:post_id))
     @posts_good_ranking = Kaminari.paginate_array(@posts_good_ranking).page(params[:page]).per(8)
+    @date1 = Date.current.strftime('%m')
   end
 
 
