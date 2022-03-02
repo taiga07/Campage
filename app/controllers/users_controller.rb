@@ -6,9 +6,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.order(created_at: :desc)
-    @following_users = @user.following_user
-    @follower_users = @user.follower_user
+    @posts = @user.posts.order(created_at: :desc)  #新しい順
+    @following_users = @user.following_user  #ユーザーがフォローした相手を格納
+    @follower_users = @user.follower_user  ##ユーザーがフォローされている相手を格納
 
     if user_signed_in?
       # DM機能
@@ -41,12 +41,14 @@ class UsersController < ApplicationController
   # フォロー一覧
   def follows
     @user = User.find(params[:id])
+    # ユーザーにフォローされているユーザーを取得
     @users = @user.following_user.page(params[:page]).per(10)
   end
 
   # フォロワー一覧
   def followers
     @user = User.find(params[:id])
+    # ユーザーがフォローされているユーザーを取得
     @users = @user.follower_user.page(params[:page]).per(10)
   end
 

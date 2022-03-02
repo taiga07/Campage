@@ -5,8 +5,8 @@ class ContactsController < ApplicationController
   end
 
   def confirm
-    @contact = Contact.new(contact_params)
-    if @contact.invalid?
+    @contact = Contact.new(contact_params)  # newアクションから入力内容を受け取る。
+    if @contact.invalid?  #バリデーションエラーが発生した場合trueを返す。
       render :new
     end
   end

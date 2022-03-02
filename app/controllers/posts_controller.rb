@@ -20,22 +20,22 @@ class PostsController < ApplicationController
 
   def index
     @user = current_user
-    @posts = Post.all.order(created_at: :desc)
+    @posts = Post.all.order(created_at: :desc)  #投稿が新しい順に取得
   end
 
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
-    @user = @post.user
-    @following_users = @user.following_user
-    @follower_users = @user.follower_user
+    @user = @post.user  #投稿に紐付いたユーザー情報を格納
+    @following_users = @user.following_user  #そのユーザーがフォローした相手を格納
+    @follower_users = @user.follower_user  #そのユーザーがフォローされている相手を格納
 
     # DM機能
     if user_signed_in?
-      @self_room = Entry.where(user_id: current_user.id).pluck(:room_id)
+      @self_room = Entry.where(user_id: current_user.id).pluck(:room_id)  #ログインユーザーが持っているroom_idを取得
       @target_room = Entry.where(user_id: @user.id).pluck(:room_id)
       @roomid = @self_room & @target_room
-      if @roomid.blank?
+      if @roomid.blank?  #値がなければtrueを返し処理をする
         @room = Room.new
         @entry = Entry.new
       else
